@@ -1,0 +1,119 @@
+﻿@model Website_BĐS.Models.PROPERTY
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h2 style="color: #797777; text-align: center">@Html.DisplayFor(model => model.PropertyName)</h2>
+    <h4 style="color: #b9b4b4; text-align: center"><img src="~/Images/location-icon.png" style="width:20px; height:20px" /> @Html.DisplayNameFor(model => model.STREET.StreetName),@Html.DisplayFor(model => model.WARD.WardName),@Html.DisplayFor(model => model.DISTRICT.DistrictName)</h4>
+    <hr />
+</div>
+<div style="text-align:center">
+    <dl class="dl-horizontal">
+        <dd>
+            <div id="carousel-example" class="carousel slide" data-ride="carousel" style="height:400px;width:700px; margin-left:15%">
+
+                <!-- Indicators -->
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox" style="height: 400px; width: 700px">
+                    <div class="item active">
+                        <img src="/Images/@Model.Avatar" />
+                    </div>
+                    @*<div class="item">
+                            @Html.DisplayFor(model => model.Images)
+                        </div>*@
+
+                </div>
+
+                <!-- Controls -->
+
+                <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </dd>
+        <div style="text-align:justify; margin-left:23%; margin-right:19%; margin-top:30px">
+            <div class="mh-estate__section">
+                <h3 class="mh-estate__section__heading" style="text-align:center">MÔ TẢ</h3>
+                <p>@Html.DisplayFor(model => model.Content)</p>
+
+                <div class="mh-estate__section">
+                    <div class="mh-estate__list">
+                        <ul class="mh-estate__list__inner ">
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.PROPERTY_TYPE.CodeType):</strong>
+                                <span>@Html.DisplayFor(model => model.PROPERTY_TYPE.CodeType)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.Price):</strong>
+                                <span>@Html.DisplayFor(model => model.Price) @Html.DisplayFor(model => model.UnitPrice)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.Area):</strong>
+                                <span>@Html.DisplayFor(model => model.Area)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.BedRoom):</strong>
+                                <span>@Html.DisplayFor(model => model.BedRoom)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.BathRoom):</strong>
+                                <span>@Html.DisplayFor(model => model.BathRoom)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.PackingPlace):</strong>
+                                <span>@Html.DisplayFor(model => model.PackingPlace)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.STREET.StreetName):</strong>
+                                <span>@Html.DisplayFor(model => model.STREET.StreetName)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.WARD.WardName):</strong>
+                                <span>@Html.DisplayFor(model => model.WARD.WardName)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.DISTRICT.DistrictName):</strong>
+                                <span>@Html.DisplayFor(model => model.DISTRICT.DistrictName)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.PROJECT_STATUS.Status_Name):</strong>
+                                <span>@Html.DisplayFor(model => model.PROJECT_STATUS.Status_Name)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.Created_at):</strong>
+                                <span>@Html.DisplayFor(model => model.Created_at)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.Create_post):</strong>
+                                <span>@Html.DisplayFor(model => model.Create_post)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.Updated_at):</strong>
+                                <span>@Html.DisplayFor(model => model.Updated_at)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.Note):</strong>
+                                <span>@Html.DisplayFor(model => model.Note)</span>
+                            </li>
+                            <li class="mh-estate__list__element">
+                                <strong>@Html.DisplayNameFor(model => model.USER.Email):</strong>
+                                <span>@Html.DisplayFor(model => model.USER.Email)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dl>
+
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
