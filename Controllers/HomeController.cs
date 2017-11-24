@@ -82,6 +82,7 @@ namespace Website_BĐS.Controllers
             ViewBag.Message = "Your contact page.";
             return View();
         }
+       
         [HttpGet]
         public ActionResult Search(string loaiDA, string quan, string phuong, string duong, int pNgu, int pTam)
         {
