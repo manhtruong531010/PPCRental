@@ -13,10 +13,10 @@ namespace Website_BĐS.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DemoPPCRentalEntities : DbContext
+    public partial class Team33Entities : DbContext
     {
-        public DemoPPCRentalEntities()
-            : base("name=DemoPPCRentalEntities")
+        public Team33Entities()
+            : base("name=Team33Entities")
         {
         }
     
@@ -25,14 +25,14 @@ namespace Website_BĐS.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DISTRICT> DISTRICT { get; set; }
-        public virtual DbSet<FEATURE> FEATURE { get; set; }
+        public virtual DbSet<DISTRICT> DISTRICTs { get; set; }
+        public virtual DbSet<FEATURE> FEATUREs { get; set; }
         public virtual DbSet<PROJECT_STATUS> PROJECT_STATUS { get; set; }
-        public virtual DbSet<PROPERTY> PROPERTY { get; set; }
+        public virtual DbSet<PROPERTY> PROPERTies { get; set; }
         public virtual DbSet<PROPERTY_FEATURE> PROPERTY_FEATURE { get; set; }
         public virtual DbSet<PROPERTY_TYPE> PROPERTY_TYPE { get; set; }
-        public virtual DbSet<STREET> STREET { get; set; }
-        public virtual DbSet<USER> USER { get; set; }
-        public virtual DbSet<WARD> WARD { get; set; }
+        public virtual DbSet<STREET> STREETs { get; set; }
+        public virtual DbSet<USER> USERs { get; set; }
+        public virtual DbSet<WARD> WARDs { get; set; }
     }
 }

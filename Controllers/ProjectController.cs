@@ -11,7 +11,7 @@ namespace Website_BĐS.Controllers
     {
         //
         // GET: /Project/
-        DemoPPCRentalEntities db = new DemoPPCRentalEntities();
+        Team33Entities db = new Team33Entities();
         public ActionResult Index()
         {
             return View();
@@ -21,7 +21,7 @@ namespace Website_BĐS.Controllers
         // GET: /Project/Details/5
         public ActionResult Details(int id)
         {
-            var project = db.PROPERTY.FirstOrDefault(x => x.ID == id);
+            var project = db.PROPERTies.FirstOrDefault(x => x.ID == id);
             return View(project);
         }
 

@@ -16,8 +16,8 @@ namespace Website_BĐS.Models
     {
         public USER()
         {
-            this.PROPERTY = new HashSet<PROPERTY>();
-            this.PROPERTY1 = new HashSet<PROPERTY>();
+            this.PROPERTies = new HashSet<PROPERTY>();
+            this.PROPERTies1 = new HashSet<PROPERTY>();
         }
     
         public int ID { get; set; }
@@ -29,7 +29,7 @@ namespace Website_BĐS.Models
         public string Role { get; set; }
         public Nullable<bool> Status { get; set; }
     
-        public virtual ICollection<PROPERTY> PROPERTY { get; set; }
-        public virtual ICollection<PROPERTY> PROPERTY1 { get; set; }
+        public virtual ICollection<PROPERTY> PROPERTies { get; set; }
+        public virtual ICollection<PROPERTY> PROPERTies1 { get; set; }
     }
 }

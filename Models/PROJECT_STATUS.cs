@@ -16,13 +16,13 @@ namespace Website_BĐS.Models
     {
         public PROJECT_STATUS()
         {
-            this.PROPERTY = new HashSet<PROPERTY>();
+            this.PROPERTies = new HashSet<PROPERTY>();
         }
     
         public int ID { get; set; }
         public string Status_Name { get; set; }
         public Nullable<bool> Status { get; set; }
     
-        public virtual ICollection<PROPERTY> PROPERTY { get; set; }
+        public virtual ICollection<PROPERTY> PROPERTies { get; set; }
     }
 }

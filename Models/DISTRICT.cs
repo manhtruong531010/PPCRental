@@ -16,17 +16,17 @@ namespace Website_BĐS.Models
     {
         public DISTRICT()
         {
-            this.PROPERTY = new HashSet<PROPERTY>();
-            this.STREET = new HashSet<STREET>();
-            this.WARD = new HashSet<WARD>();
+            this.PROPERTies = new HashSet<PROPERTY>();
+            this.STREETs = new HashSet<STREET>();
+            this.WARDs = new HashSet<WARD>();
         }
     
         public int ID { get; set; }
         public string DistrictName { get; set; }
         public Nullable<bool> Status { get; set; }
     
-        public virtual ICollection<PROPERTY> PROPERTY { get; set; }
-        public virtual ICollection<STREET> STREET { get; set; }
-        public virtual ICollection<WARD> WARD { get; set; }
+        public virtual ICollection<PROPERTY> PROPERTies { get; set; }
+        public virtual ICollection<STREET> STREETs { get; set; }
+        public virtual ICollection<WARD> WARDs { get; set; }
     }
 }

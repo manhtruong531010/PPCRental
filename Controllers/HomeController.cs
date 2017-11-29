@@ -9,7 +9,7 @@ namespace Website_BĐS.Controllers
     public class HomeController : Controller
     {
         List<SelectListItem> type, district, ward, street, bedroom, baths;
-        DemoPPCRentalEntities model = new DemoPPCRentalEntities();
+        Team33Entities model = new Team33Entities();
         public void Function()
         {
             
@@ -21,11 +21,11 @@ namespace Website_BĐS.Controllers
             baths = new List<SelectListItem>();
            
             var typ = model.PROPERTY_TYPE.ToList();
-            var dist = model.DISTRICT.ToList();
-            var war = model.WARD.ToList().OrderBy(x => x.WardName);
-            var stree = model.STREET.ToList().OrderBy(x => x.StreetName);
-            var bedroo = model.PROPERTY.ToList();
-            var bat = model.PROPERTY.ToList();
+            var dist = model.DISTRICTs.ToList();
+            var war = model.WARDs.ToList().OrderBy(x => x.WardName);
+            var stree = model.STREETs.ToList().OrderBy(x => x.StreetName);
+            var bedroo = model.PROPERTies.ToList();
+            var bat = model.PROPERTies.ToList();
           
             foreach (var n in typ)
             {
@@ -67,7 +67,7 @@ namespace Website_BĐS.Controllers
         public ActionResult Index()
         {
             Function();
-            var property = model.PROPERTY.ToList().OrderByDescending(x => x.ID);
+            var property = model.PROPERTies.ToList().OrderByDescending(x => x.ID);
             return View(property);
         }
 
@@ -87,7 +87,7 @@ namespace Website_BĐS.Controllers
         public ActionResult Search(string loaiDA, string quan, string phuong, string duong, int pNgu, int pTam)
         {
             Function();
-            var search = model.PROPERTY.ToList().Where(x => x.DISTRICT.DistrictName == quan || x.WARD.WardName == phuong || x.STREET.StreetName == duong || x.BathRoom == pTam || x.BedRoom == pNgu || x.PROPERTY_TYPE.Description == loaiDA);
+            var search = model.PROPERTies.ToList().Where(x => x.DISTRICT.DistrictName == quan || x.WARD.WardName == phuong || x.STREET.StreetName == duong || x.BathRoom == pTam || x.BedRoom == pNgu || x.PROPERTY_TYPE.Description == loaiDA);
 
             
 
