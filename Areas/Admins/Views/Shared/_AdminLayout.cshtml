@@ -116,7 +116,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="">
-                                    <p>Account</p>
+                                    @Session["username"]
                                 </a>
                             </li>
                             <li class="dropdown">
@@ -137,7 +137,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="~/Account/Logout">
                                     <p>Log out</p>
                                 </a>
                             </li>

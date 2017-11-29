@@ -3,97 +3,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admins/Views/Shared/_AdminLayout.cshtml";
+    if (Session["userid"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
 }
 
 
-<div class="col-md-12">
-     <div class="card">
-        <div class="header">
-            
-        </div>
-        <div class="content table-responsive table-full-width">
-            <table class="table table-hover table-striped" id="dataTable" style="font-size: 13px; border-radius:4px">
-                <thead>
-                    <tr>
-                        <th>USER_ID
-                            <img src="~/Images/icon-arrowdown.jpg" style="width:4px; height:6px" />
-                            <img src="~/Images/icon-arrowup.png" style="width:4px; height:6px" />
-                        </th>
-                        <th>Email
-                            <img src="~/Images/icon-arrowdown.jpg" style="width:4px; height:6px" />
-                            <img src="~/Images/icon-arrowup.png" style="width:4px; height:6px" />
-                        </th>
-                        <th>Full Name
-                            <img src="~/Images/icon-arrowdown.jpg" style="width:4px; height:6px" />
-                            <img src="~/Images/icon-arrowup.png" style="width:4px; height:6px" />
-                        </th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>Ation</th>
-                    </tr>
-                </thead>
 
-
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FullName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Address)
-                            </td>
-                            <td>
-                                @*@Html.DisplayFor(modelItem => item.Role)*@
-                                @if (int.Parse(item.Role) == 0)
-                                {
-                                    ViewBag.Role = "Sale";
-                                }
-                                @if (int.Parse(item.Role) == 1)
-                                {
-                                    ViewBag.Role = "Agency";
-                                }
-                                @ViewBag.Role
-                            </td>
-                            <td>
-                                @*@Html.DisplayFor(modelItem => item.Status)*@
-                                @if (item.Status == true)
-                                {
-                                    ViewBag.Status = "Kích Hoạt";
-                                }
-                                else
-                                {
-                                    ViewBag.Status = "Chưa Kích Hoạt";
-                                }
-                                @Html.ActionLink("Kích Hoạt", "Kích Hoạt", new { id = item.ID })
-                            </td>
-                            <td>
-                                @Html.ActionLink("ViewProperty", "ViewProperty", new { id = item.ID }) |
-
-                            </td>
-                        </tr>
-                    }
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-
-    </div>
-</div>
 
