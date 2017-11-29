@@ -119,13 +119,21 @@
                     <div class="caption">
                         <h3 style="color: #0096ff; font-size: 18px; margin-top: -1px">
                             @{
-            if (@item.PropertyName.Length <= 28)
-            { @item.PropertyName}
-            else
-            {<span>@item.PropertyName.Substring(0, 28)...</span> }
+                                if (@item.PropertyName.Length <= 28)
+                                { @item.PropertyName}
+                                else
+                                {<span>@item.PropertyName.Substring(0, 28)...</span> }
                             }
                         </h3>
-                        <p style="font-size:12px">@item.Content.Substring(0, 65)...</p>
+                        <p 
+                           @{
+                                if (@item.Content.Length <= 65)
+                                {@item.Content}
+                                else
+                                {<span style="font-size:12px">@item.Content.Substring(0, 65)...</span>}
+                            }
+                           
+                        </p>
                         <p style="font-size:12px"><img src="~/Images/location-icon.png" style="width:20px; height:20px" /> @item.STREET.StreetName,@item.WARD.WardName,@item.DISTRICT.DistrictName</p>
                         <p style="font-size: 15px; color: #0096ff">$ @item.Price</p>
                         <p>
@@ -140,8 +148,6 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
         }
 
     </div>

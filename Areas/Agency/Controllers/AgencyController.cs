@@ -16,12 +16,32 @@ namespace Website_BĐS.Areas.Agency.Controllers
             if (Session["userid"] != null)
             {
                 var id = (int)Session["userid"];
-                var user = model.PROPERTies.Where(x => x.USER.ID == id).ToList();
+                var user = model.PROPERTies.OrderBy(x => x.USER.ID == id).ToList();
                 return View(user);
             }
             else
             {
                 return View();
+            }
+        }
+        public ActionResult Details(int id)
+        {
+            var project = model.PROPERTies.FirstOrDefault(x => x.ID == id);
+            return RedirectToAction("Details","Agency");
+        }
+        public ActionResult Create()
+        {
+            ReadList();
+            return View();
+        }
+        public class XulyModels
+        {
+            Team33Entities db = new Team33Entities();
+            public long Insert(PROPERTY entytiy)
+            {
+                db.PROPERTies.Add(entytiy);
+                db.SaveChanges();
+                return entytiy.ID;
             }
         }
         public ActionResult Edit(int id)
@@ -46,6 +66,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
         {
             ReadList();
             var en = model.PROPERTies.Find(p.ID);
+            var IDUser = (int)Session["userid"];
 
             //single image
             var PROPERTY = model.PROPERTies.FirstOrDefault(x => x.ID == id);
@@ -84,10 +105,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
             PROPERTY.BedRoom = p.BedRoom;
             PROPERTY.BathRoom = p.BathRoom;
             PROPERTY.PackingPlace = p.PackingPlace;
-            if (p.UserID != null)
-            {
-                PROPERTY.UserID = 1;
-            }
+            PROPERTY.UserID = IDUser;
             PROPERTY.Status_ID = p.Status_ID;
             PROPERTY.Note = p.Note;
             PROPERTY.Updated_at = DateTime.Now;
@@ -98,13 +116,6 @@ namespace Website_BĐS.Areas.Agency.Controllers
             return RedirectToAction("Index", "Agency");
 
         }
-
-        public ActionResult Details(int id)
-        {
-            int ID = id;
-            return RedirectToAction("Details", "Admin", new { id = ID });
-
-        }
         public ActionResult Delete(int id)
         {
             var db = model.PROPERTies.Find(id);
@@ -113,6 +124,95 @@ namespace Website_BĐS.Areas.Agency.Controllers
             int ID = id;
             return RedirectToAction("Index", "Agency", new { id = ID });
         }
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PROPERTY pROPERTY, List<HttpPostedFileBase> files)
+        {
+            ReadList();
+            var product = new PROPERTY();
+            var IDUser = (int)Session["userid"];
+
+            try
+            {
+
+                string filename = Path.GetFileNameWithoutExtension(pROPERTY.AvatarFile.FileName);
+                string extension = Path.GetExtension(pROPERTY.AvatarFile.FileName);
+                filename = filename + "checkcheck" + DateTime.Now.ToString("yymmssfff") + extension;
+                pROPERTY.Avatar = filename;
+                filename = Path.Combine(Server.MapPath("~/Images"), filename);
+                // Avatar
+
+                if (Path.GetFileNameWithoutExtension(pROPERTY.AvatarFile.FileName) == null)
+                {
+                    string s2 = "~/Images/ImagesNull.png";
+                    pROPERTY.AvatarFile.SaveAs(s2);
+                    //property.ImageFile2.SaveAs(filename2);
+                }
+                else
+                {
+                    //property.ImageFile2.SaveAs(filename2);
+                    pROPERTY.AvatarFile.SaveAs(filename);
+                }
+
+                pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                var modelCr = new XulyModels();
+                if (ModelState.IsValid)
+                {
+                    long id = modelCr.Insert(pROPERTY);
+                    var path = "";
+                    foreach (var item in files)
+                    {
+                        if (item != null)
+                        {
+                            if (item.ContentLength > 0)
+                            {
+                                if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".png"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".gif"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
+                                {
+                                    var path0 = id + item.FileName;
+                                    path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
+
+                                    item.SaveAs(path);
+                                    ViewBag.UploadSuccess = true;
+
+                                }
+                            }
+                        }
+                    }
+                    if (id > 0)
+                    {
+                        return RedirectToAction("Index", "Agency");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Create khong thanh cong");
+                    }
+                }
+
+
+            }
+            catch
+            {
+
+            }
+            product.PropertyName = pROPERTY.PropertyName;
+            product.PropertyType_ID = pROPERTY.PropertyType_ID;
+            product.Content = pROPERTY.Content;
+            product.Street_ID = pROPERTY.Street_ID;
+            product.WARD = pROPERTY.WARD;
+            product.District_ID = pROPERTY.District_ID;
+            product.Price = pROPERTY.Price;
+            product.UnitPrice = pROPERTY.UnitPrice;
+            product.Area = pROPERTY.Area;
+            product.BedRoom = pROPERTY.BedRoom;
+            product.BathRoom = pROPERTY.BathRoom;
+            product.PackingPlace = pROPERTY.PackingPlace;
+            product.UserID = IDUser;
+            model.SaveChanges();
+            return RedirectToAction("Index", "Agency");
+        }
     }
 }

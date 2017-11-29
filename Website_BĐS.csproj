@@ -322,6 +322,8 @@
     <Content Include="Areas\Agency\Views\web.config" />
     <Content Include="Areas\Agency\Views\Agency\Index.cshtml" />
     <Content Include="Areas\Agency\Views\Agency\Edit.cshtml" />
+    <Content Include="Areas\Agency\Views\Agency\Create.cshtml" />
+    <Content Include="Areas\Agency\Views\Agency\Details.cshtml" />
     <None Include="Scripts\Admin.js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.min.js" />
