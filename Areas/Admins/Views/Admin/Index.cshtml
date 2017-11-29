@@ -10,5 +10,82 @@
 }
 
 
+<div class="col-md-12">
+    <div class="card">
+        <div class="header">
+
+        </div>
+        <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped" style="font-size: 13px; border-radius:4px">
+                <thead>
+                    <tr>
+                        <th>USER_ID</th>
+                        <th>Email</th>
+                        <th>Full Name</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (int.Parse(item.Role) == 1)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Role)*@
+
+                                    @if (int.Parse(item.Role) == 1)
+                                    {
+                                        ViewBag.Role = "Agency";
+                                    }
+                                    @ViewBag.Role
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Status)*@
+                                    @if (item.Status == true)
+                                    {
+                                        ViewBag.Status = "Kích Hoạt";
+                                    }
+                                    else
+                                    {
+                                        ViewBag.Status = "Chưa Kích Hoạt";
+                                    }
+                                    @Html.ActionLink("Kích Hoạt", "Kích Hoạt", new { id = item.ID })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("ViewProperty", "ViewProperty", new { id = item.ID })
+
+                                </td>
+                            </tr>
+                        }
+
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
 
 
+
+    </div>
+</div>

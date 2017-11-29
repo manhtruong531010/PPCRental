@@ -174,7 +174,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
             PROPERTY.BedRoom = p.BedRoom;
             PROPERTY.BathRoom = p.BathRoom;
             PROPERTY.PackingPlace = p.PackingPlace;
-            PROPERTY.UserID = p.UserID;
+            
             PROPERTY.Status_ID = p.Status_ID;
             PROPERTY.Note = p.Note;
             PROPERTY.Updated_at = DateTime.Now;
