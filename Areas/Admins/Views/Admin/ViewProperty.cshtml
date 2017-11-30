@@ -8,6 +8,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="header">
+            <img src="~/Images/icon-add.png" style="width:25px"/>
             @Html.ActionLink("Create New Property", "Create")
         </div>
         <div class="content table-responsive table-full-width">
@@ -97,7 +98,9 @@
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-                                @Html.ActionLink("Details", "Details", new { id = item.ID })
+                                <a href="~/Agency/Agency/DetailsAgency/@item.ID">
+                                    Details
+                                </a>
                                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                             </td>
                         </tr>

@@ -16,7 +16,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
             if (Session["userid"] != null)
             {
                 var id = (int)Session["userid"];
-                var user = model.PROPERTies.OrderBy(x => x.USER.ID == id).ToList();
+                var user = model.PROPERTies.OrderByDescending(x => x.USER.ID == id).ToList();
                 return View(user);
             }
             else
@@ -24,10 +24,15 @@ namespace Website_BĐS.Areas.Agency.Controllers
                 return View();
             }
         }
-        public ActionResult Details(int id)
+
+        public ActionResult DetailsAgency(int id)
         {
+            int ID = id;
             var project = model.PROPERTies.FirstOrDefault(x => x.ID == id);
-            return RedirectToAction("Details","Agency");
+            ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
+                            .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+            //return RedirectToAction("DetailsAgency", "Agency", new { id = ID });
+            return View(project);
         }
         public ActionResult Create()
         {
@@ -131,7 +136,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
         {
             ReadList();
             var product = new PROPERTY();
-            var IDUser = (int)Session["userid"];
+
 
             try
             {
@@ -210,7 +215,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
             product.BedRoom = pROPERTY.BedRoom;
             product.BathRoom = pROPERTY.BathRoom;
             product.PackingPlace = pROPERTY.PackingPlace;
-            product.UserID = IDUser;
+            product.UserID = int.Parse(Session["userid"].ToString());
             model.SaveChanges();
             return RedirectToAction("Index", "Agency");
         }

@@ -33,6 +33,25 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
+
+        <label>Anh Chi Tiet</label>
+
+
+
+        @{
+            foreach (var image in (IEnumerable<string>)ViewBag.Images)
+            {
+
+                if (image.Contains(Model.ID.ToString()))
+                {
+
+                    <img src="@Url.Content(image)" width="100px" />
+                }
+
+            }
+        }
+
+
         @*Details*@
         <div class="col-xs-6" style="margin-left: 10%; background-color: #f3f1f1; width:86%; margin-top:5%; padding-top:10px">
             <div class="col-xs-6">
@@ -52,6 +71,7 @@
                 <span>@Html.DisplayFor(model => model.PackingPlace)</span>
 
             </div>
+
             <div class="col-xs-6" style="padding-bottom:20px">
                 <strong>@Html.DisplayNameFor(model => model.STREET.StreetName):</strong>
                 <span>@Html.DisplayFor(model => model.STREET.StreetName)</span>

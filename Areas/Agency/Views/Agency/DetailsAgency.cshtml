@@ -1,7 +1,7 @@
 ﻿@model Website_BĐS.Models.PROPERTY
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "DetailsAgency";
     Layout = "~/Areas/Admins/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,7 +10,7 @@
     <h4 style="color: #b9b4b4; text-align: center"><img src="~/Images/location-icon.png" style="width:20px; height:20px" /> @Html.DisplayFor(model => model.STREET.StreetName),@Html.DisplayFor(model => model.WARD.WardName),@Html.DisplayFor(model => model.DISTRICT.DistrictName)</h4>
     <hr />
 </div>
-<div class="row" style="margin-left:8%; margin-right:8%">
+<div class="row" style="margin-left:10%; margin-right:8%">
     <div class="col-md-8">
         @* --Images*@
         <div id="carousel-example" class="carousel slide" data-ride="carousel" style="height:400px;width:700px; margin-left:10%">
@@ -23,17 +23,27 @@
                 </div>
             </div>
 
-            <!-- Controls -->
-
-            <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
         </div>
+        <p style=" margin-left:65px; margin-top: 5px">
+            @{
+                foreach (var image in (IEnumerable<string>)ViewBag.Images)
+                {
+
+                    if (image.Contains(Model.ID.ToString()))
+                    {
+
+                        <img src="@Url.Content(image)" width="100px" />
+                    }
+
+                }
+            }
+        </p>
+
+ 
+    
+
         @*Details*@
-        <div class="col-xs-6" style="margin-left: 10%; background-color: #f3f1f1; width:86%; margin-top:5%; padding-top:10px">
+        <div class="col-xs-6" style="margin-left: 20%; background-color: #f3f1f1; width:86%; margin-top:5%; padding-top:10px">
             <div class="col-xs-6">
                 <strong>@Html.DisplayNameFor(model => model.PROPERTY_TYPE.CodeType):</strong>
                 <span>@Html.DisplayFor(model => model.PROPERTY_TYPE.CodeType)</span>
@@ -51,6 +61,7 @@
                 <span>@Html.DisplayFor(model => model.PackingPlace)</span>
 
             </div>
+
             <div class="col-xs-6" style="padding-bottom:20px">
                 <strong>@Html.DisplayNameFor(model => model.STREET.StreetName):</strong>
                 <span>@Html.DisplayFor(model => model.STREET.StreetName)</span>
@@ -70,13 +81,13 @@
             </div>
         </div>
         @*Tiện ích*@
-        <div class="col-md-8" style="margin-left: 10%; background-color: #f3f1f1; width:86%; margin-top:5%">
+        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:86%; margin-top:5%">
             <h3 style="text-align: center; padding-top:-15px">TIỆN ÍCH</h3>
             <hr style="color:#797777; border:1px solid" />
             <p style="padding-bottom:10px"></p>
         </div>
         @*Mổ tả*@
-        <div class="col-md-8" style="margin-left: 10%; background-color: #f3f1f1; width:86%; margin-top:5%">
+        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:86%; margin-top:5%">
             <h3 style="text-align: center; padding-top:-15px">MÔ TẢ</h3>
             <hr style="color:#797777; border:1px solid" />
             <p style="padding-bottom:10px">@Html.DisplayFor(model => model.Content)</p>
@@ -84,31 +95,6 @@
 
 
     </div>
-
-    <div class="col-md-4">
-        <div class="col-xs-8" style="width: 80%; background-color: #00BFFF; text-align: center; ">
-            <p style="font-size:22px; color:#f3f1f1;padding-top:2%">Được đăng bởi @Html.DisplayFor(model => model.USER.FullName)</p>
-        </div>
-        <div class="col-xs-8" style="width: 80%; background-color: #f3f1f1">
-            <p style="font-size:15px;padding-top:2%"><img src="~/Images/phone1-icon.png" style="width:25px" /> @Html.DisplayFor(model => model.USER.Phone)</p>
-            <p style="font-size:15px;padding-top:2%"><img src="~/Images/Email-icon.png" style="width:25px" /> @Html.DisplayFor(model => model.USER.Email)</p>
-        </div>
-        <div class="col-xs-8" style="width: 80%">
-            <hr style="color: #00BFFF; border:1px solid" />
-            <p style="font-size: 20px; color: #797777; text-align:center ">Để lại tin nhắn</p>
-            <input type="text" placeholder="  Email" style="width: 100%; height: 40px; border-color: #00BFFF" />
-            <input type="text" placeholder="  SĐT" style="width: 100%; height: 40px; margin-top: 3%; border-color: #00BFFF" />
-            <textarea style="width: 100%; margin-top: 3%; height: 150px; border-color: #00BFFF" placeholder="  Tin nhắn"></textarea>
-            <button style="width: 100px; height: 30px; border-color: #00BFFF; background-color:#f3f1f1; margin-left:60%; margin-top:5%">
-                <p style="text-align: center; color: #00BFFF; font-size:18px">Gửi</p>
-            </button>
-            <hr style="color: #00BFFF; border:1px solid" />
-
-        </div>
-
-
-
-    </div>
-
 </div>
+
 

@@ -19,8 +19,8 @@ namespace Website_BĐS.Areas.Admins.Controllers
         }
         public ActionResult ViewProperty(int id)
         {
-            ViewBag.Type = model.PROPERTY_TYPE.ToList();
-            var product = model.PROPERTies.ToList();
+            //ViewBag.Type = model.PROPERTY_TYPE.ToList();
+            var product = model.PROPERTies.Where(x => x.USER.ID == id).ToList();
             return View(product);
         }
         public ActionResult Create()
@@ -122,6 +122,14 @@ namespace Website_BĐS.Areas.Admins.Controllers
             ReadList();
             return View(product);
         }
+        public ActionResult Delete(int id)
+        {
+            var db = model.PROPERTies.Find(id);
+            model.PROPERTies.Remove(db);
+            model.SaveChanges();
+            int ID = id;
+            return RedirectToAction("Index", "Agency", new { id= ID});
+        }
         public void ReadList()
         {
             ViewBag.ptype = model.PROPERTY_TYPE.OrderByDescending(x => x.ID).ToList();
@@ -189,7 +197,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
         public ActionResult Details(int id)
         {
             int ID = id;
-            return RedirectToAction("Details","Admin", new { id = ID});
+            return RedirectToAction("Details","Home", new { id = ID});
 
         }
         

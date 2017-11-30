@@ -231,8 +231,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admins\Image\sidebar-11726532.jpg" />
-    <Content Include="Areas\Admins\Image\sidebar-5.jpg" />
+    <Content Include="Areas\Admins\Controllers\Image\sidebar-11726532.jpg" />
+    <Content Include="Areas\Admins\Controllers\Image\sidebar-5.jpg" />
     <Content Include="Content\Admin.css\animate.min.css" />
     <Content Include="Content\Admin.css\bootstrap.css" />
     <Content Include="Content\Admin.css\bootstrap.min.css" />
@@ -246,10 +246,12 @@
     <Content Include="Content\Admin.css\pe-icon-7-stroke.css" />
     <Content Include="Content\Admin.css\sb-admin.css" />
     <Content Include="Content\Admin.css\Site.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Images\BG011713419.jpg" />
     <Content Include="Images\BG041700257.jpg" />
     <Content Include="Images\BG051715118.jpg" />
     <Content Include="Images\Email-icon.png" />
+    <Content Include="Images\icon-add.png" />
     <Content Include="Images\icon-arrowdown.jpg" />
     <Content Include="Images\icon-arrowup.png" />
     <Content Include="Images\icon-dashboard.png" />
@@ -323,7 +325,8 @@
     <Content Include="Areas\Agency\Views\Agency\Index.cshtml" />
     <Content Include="Areas\Agency\Views\Agency\Edit.cshtml" />
     <Content Include="Areas\Agency\Views\Agency\Create.cshtml" />
-    <Content Include="Areas\Agency\Views\Agency\Details.cshtml" />
+    <Content Include="Areas\Agency\Views\Shared\_AgencyLayout.cshtml" />
+    <Content Include="Areas\Agency\Views\Agency\DetailsAgency.cshtml" />
     <None Include="Scripts\Admin.js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.min.js" />
@@ -381,6 +384,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\light-bootstrap-dashboard.js" />
+    <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
@@ -413,7 +417,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admins\Models\" />
     <Folder Include="Areas\Agency\Models\" />
-    <Folder Include="Areas\Agency\Views\Shared\" />
     <Folder Include="MultiImages\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
