@@ -246,10 +246,11 @@
     <Content Include="Content\Admin.css\pe-icon-7-stroke.css" />
     <Content Include="Content\Admin.css\sb-admin.css" />
     <Content Include="Content\Admin.css\Site.css" />
+    <Content Include="Content\Home\animate.css" />
+    <Content Include="Content\Home\bootstrap.min.css" />
+    <Content Include="Content\Home\font-awesome.min.css" />
+    <Content Include="Content\Home\style.css" />
     <Content Include="Content\style.css" />
-    <Content Include="Images\BG011713419.jpg" />
-    <Content Include="Images\BG041700257.jpg" />
-    <Content Include="Images\BG051715118.jpg" />
     <Content Include="Images\Email-icon.png" />
     <Content Include="Images\icon-add.png" />
     <Content Include="Images\icon-arrowdown.jpg" />
@@ -258,6 +259,7 @@
     <Content Include="Images\icon-list.png" />
     <Content Include="Images\icon-notification.png" />
     <Content Include="Images\icon-user.png" />
+    <Content Include="Images\Icon.png" />
     <Content Include="Images\mail-icon.png" />
     <Content Include="Images\mail1-icon.png" />
     <Content Include="Images\phone-icon.png" />
@@ -274,7 +276,6 @@
     <Content Include="Images\area-icon.png" />
     <Content Include="Images\bathroom-icon.png" />
     <Content Include="Images\bedroom-icon.png" />
-    <Content Include="Images\Icon.png" />
     <Content Include="Images\IMG_1592-stamp.jpg" />
     <Content Include="Images\location-icon.png" />
     <Content Include="Images\phone1-icon.png" />
@@ -288,7 +289,6 @@
     <Content Include="Images\PIS_7389-Edit-stamp.jpg" />
     <Content Include="Images\PIS_7432-Edit-stamp.jpg" />
     <Content Include="Images\sunshine-benthanh-cityhome-10-stamp.jpg" />
-    <Content Include="Images\ảnh1700117.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -346,11 +346,6 @@
     <Content Include="Scripts\Admin.js\sb-admin-datatables.min.js" />
     <Content Include="Scripts\Admin.js\sb-admin.min.js" />
     <None Include="Scripts\Admin.js\_references.js" />
-    <Content Include="Scripts\bootstrap-notify.js" />
-    <Content Include="Scripts\bootstrap-select.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -360,40 +355,19 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.min.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\chartist.min.js" />
-    <Content Include="Scripts\dataTables.bootstrap4.js" />
-    <Content Include="Scripts\demo.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.2.1.js" />
-    <Content Include="Scripts\jquery-3.2.1.min.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.2.1.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.3.2.1.min.js" />
-    <Content Include="Scripts\jquery.dataTables.js" />
-    <Content Include="Scripts\jquery.easing.min.js" />
-    <Content Include="Scripts\jquery.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\light-bootstrap-dashboard.js" />
-    <Content Include="Scripts\Login.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\sb-admin-datatables.min.js" />
-    <Content Include="Scripts\sb-admin.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.11.1.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery.backstretch.js" />
+    <Content Include="Scripts\jquery.backstretch.min.js" />
+    <Content Include="Scripts\placeholder.js" />
+    <Content Include="Scripts\retina-1.1.0.js" />
+    <Content Include="Scripts\retina-1.1.0.min.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\waypoints.js" />
+    <Content Include="Scripts\waypoints.min.js" />
+    <Content Include="Scripts\wow.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -412,6 +386,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutHomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Website_BĐS.Models.PROPERTY>
 @{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
 }
 
 <div id="carousel-example" class="carousel slide" data-ride="carousel" style="height:620px">
@@ -10,12 +11,10 @@
     <div class="carousel-inner" role="listbox" style="height: 620px; margin-top:-10px">
         <div class="item active">
             <img src="~/Images/IMG_1592-stamp.jpg" style="width:100%" />
-
         </div>
         <div class="item">
             <img src="~/Images/PIS_6656-Edit-stamp.jpg" style="width:100%" />
         </div>
-
     </div>
 
     <!-- Controls -->
@@ -30,7 +29,7 @@
 <!-------------------------------------FILTER------------------------------------->
 <!-------------------------------------FILTER------------------------------------->
 
-<div class="mh-search-horizontal wow rotateIn"  style=" margin-top: -180px; width:90%; height:250px">
+@*<div class="mh-search-horizontal wow rotateIn"  style=" margin-top: -180px; width:90%; height:250px">
     <h5 class="mh-search__label" style="margin-top:-15px; margin-bottom :-15px; color:#00b9ff; font-size: 20px"></h5>
     <hr style=" border:1px solid; color:#00b9ff" />
     <div class="filter">
@@ -103,11 +102,10 @@
         </div>
 
     </div>
-    @*end filter form*@
-</div>
+</div>*@
+<!-------------------------------------End FILTER------------------------------------->
 <p style="font-size: 30px; color: #0096ff; text-align: center; margin-top: 20px; margin-bottom: 20px;">DỰ ÁN</p>
-<hr style="border: solid; color: #0096ff; margin-top: -20px; width: 100px">
-    />
+<hr style="border: solid; color: #0096ff; margin-top: -20px; width: 100px" />
 <div class="container body-content">
     <div class="row">
 
