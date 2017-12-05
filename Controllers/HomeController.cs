@@ -8,67 +8,54 @@ namespace Website_BĐS.Controllers
 {
     public class HomeController : Controller
     {
-        List<SelectListItem> type, district, ward, street, bedroom, baths;
-        Team33Entities model = new Team33Entities();
-        public void Function()
-        {
+        List<SelectListItem> type, district, street;
+      public  Team33Entities model = new Team33Entities();
+        //public void Function()
+        //{
             
-            type = new List<SelectListItem>();
-            district = new List<SelectListItem>();
-            ward = new List<SelectListItem>();
-            street = new List<SelectListItem>();
-            bedroom = new List<SelectListItem>();
-            baths = new List<SelectListItem>();
+        //    type = new List<SelectListItem>();
+        //    district = new List<SelectListItem>();
+        //    street = new List<SelectListItem>();
            
-            var typ = model.PROPERTY_TYPE.ToList();
-            var dist = model.DISTRICTs.ToList();
-            var war = model.WARDs.ToList().OrderBy(x => x.WardName);
-            var stree = model.STREETs.ToList().OrderBy(x => x.StreetName);
-            var bedroo = model.PROPERTies.ToList();
-            var bat = model.PROPERTies.ToList();
-          
-            foreach (var n in typ)
-            {
-                type.Add(new SelectListItem { Text = n.Description, Value = n.Description });
-            }
-            ViewData["LoaiDA"] = type;
+        //    var typ = model.PROPERTY_TYPE.ToList();
+        //    var dist = model.DISTRICTs.ToList();
+        //    var stree = model.STREETs.ToList().OrderBy(x => x.StreetName);
 
-            /*---------Quận------------*/
-            foreach (var n in dist)
-            {
-                district.Add(new SelectListItem { Text = n.DistrictName, Value = n.DistrictName });
-            }
-            ViewData["Quan"] = district;
-            /*---------Phường------------*/
-            foreach (var n in war)
-            {
-                ward.Add(new SelectListItem { Text = n.WardName, Value = n.WardName });
-            }
-            ViewData["Phuong"] = ward;
-            /*---------Đường------------*/
-            foreach (var n in stree)
-            {
-                street.Add(new SelectListItem { Text = n.StreetName, Value = n.StreetName });
-            }
-            ViewData["Duong"] = street;
-            /*---------Phòng ngủ------------*/
-            foreach (var n in bedroo)
-            {
-                bedroom.Add(new SelectListItem { Text = n.BedRoom.ToString(), Value = n.BedRoom.ToString() });
-            }
-            ViewData["PNgu"] = bedroom;
-            /*---------Phòng tắm------------*/
-            foreach (var n in bat)
-            {
-                baths.Add(new SelectListItem { Text = n.BathRoom.ToString(), Value = n.BathRoom.ToString() });
-            }
-            ViewData["PTam"] = baths;
-        }
+          
+        //    foreach (var n in typ)
+        //    {
+        //        type.Add(new SelectListItem { Text = n.Description, Value = n.Description });
+        //    }
+        //    ViewData["LoaiDA"] = type;
+
+        //    /*---------Quận------------*/
+        //    foreach (var n in dist)
+        //    {
+        //        district.Add(new SelectListItem { Text = n.DistrictName, Value = n.DistrictName });
+        //    }
+        //    ViewData["Quan"] = district;
+        //    /*---------Đường------------*/
+        //    foreach (var n in stree)
+        //    {
+        //        street.Add(new SelectListItem { Text = n.StreetName, Value = n.StreetName });
+        //    }
+        //    ViewData["Duong"] = street;
+        //}
         public ActionResult Index()
         {
-            Function();
+            //Function();
             var property = model.PROPERTies.ToList().OrderByDescending(x => x.ID);
             return View(property);
+        }
+        public JsonResult GetStreet(int did)
+        {
+            var db = new Team33Entities();
+            var streets = db.STREETs.Where(s => s.District_ID== did);
+            return Json(streets.Select(s => new
+            {
+                id = s.ID,
+                text = s.StreetName
+            }), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()
@@ -83,15 +70,25 @@ namespace Website_BĐS.Controllers
             return View();
         }
        
-        [HttpGet]
-        public ActionResult Search(string loaiDA, string quan, string phuong, string duong, int pNgu, int pTam)
+        [HttpPost]
+        public ActionResult Search(int? loaiDA, int? Quan, int? Duong)
         {
-            Function();
-            var search = model.PROPERTies.ToList().Where(x => x.DISTRICT.DistrictName == quan || x.WARD.WardName == phuong || x.STREET.StreetName == duong || x.BathRoom == pTam || x.BedRoom == pNgu || x.PROPERTY_TYPE.Description == loaiDA);
-
-            
-
-            return View(search);
+            var pro = model.PROPERTies.ToList();
+            if (loaiDA != null)
+            {
+                pro = pro.Where(x => x.PropertyType_ID == loaiDA).ToList();
+            }
+            if (Quan != null)
+            {
+                pro = pro.Where(x => x.District_ID == Quan).ToList();
+            }
+            if (Duong != null)
+            {
+                pro = pro.Where(x => x.Street_ID == Duong).ToList();
+            }
+            //Function();
+            //var search = model.PROPERTies.ToList().Where(x => x.DISTRICT.DistrictName == quan || x.STREET.StreetName == duong || x.PROPERTY_TYPE.Description == loaiDA);
+            return View(pro);
         }
     }
 }

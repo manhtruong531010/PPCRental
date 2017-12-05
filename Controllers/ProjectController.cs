@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using Website_BĐS.Models;
 
 namespace Website_BĐS.Controllers
@@ -21,7 +22,10 @@ namespace Website_BĐS.Controllers
         // GET: /Project/Details/5
         public ActionResult Details(int id)
         {
+            int ID = id;
             var project = db.PROPERTies.FirstOrDefault(x => x.ID == id);
+            ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
+                            .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
             return View(project);
         }
 

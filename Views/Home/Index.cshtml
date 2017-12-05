@@ -1,9 +1,15 @@
 ﻿@model IEnumerable<Website_BĐS.Models.PROPERTY>
+@using Website_BĐS.Models;
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+    Team33Entities db = new Team33Entities();
+    var Protyp = new SelectList(db.PROPERTY_TYPE, "ID", "CodeType");
+    var Quans = new SelectList(db.DISTRICTs, "ID", "DistrictName");
+    var Duongs = new SelectList(db.STREETs.Take(0), "ID", "StreetName");
 }
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <div id="carousel-example" class="carousel slide" data-ride="carousel" style="height:620px">
 
     <!-- Indicators -->
@@ -29,80 +35,46 @@
 <!-------------------------------------FILTER------------------------------------->
 <!-------------------------------------FILTER------------------------------------->
 
-@*<div class="mh-search-horizontal wow rotateIn"  style=" margin-top: -180px; width:90%; height:250px">
+<div class="mh-search-horizontal wow rotateIn" style=" margin-top: -110px; width:75%; height:200px">
     <h5 class="mh-search__label" style="margin-top:-15px; margin-bottom :-15px; color:#00b9ff; font-size: 20px"></h5>
-    <hr style=" border:1px solid; color:#00b9ff" />
-    <div class="filter">
-        <div class="filter-form">
-            <form id="advanced_search" role="search" action="@Url.Action("Search","Home")" name="search" method="get">
-
-                <div class="col-xs-2 ">
-                    <label>Loại dự án</label>
-                    <div class="show-menu-arrow selectpicker">
-                        @Html.DropDownList("loaiDA", (IEnumerable<SelectListItem>)ViewData["LoaiDA"], "--Chọn loại dự án--", new { @class = "shape" })
+    <div class="filter" style="margin-top:10px">
+        <div class="filter-form" style="color:#080707">
+@*@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+{*@
+            <form id="advanced_search" role="search" action="@Url.Action("Search","Home")" name="search" method="post">
+                <div>
+                    <div class="col-xs-4 select2-selection__rendered" style="text-align:center">
+                        <label>Loại dự án</label>
+                        <div>
+                            @Html.DropDownList("loaiDA", Protyp, "Chọn loại dự án...", new {@id = "type" })
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-2">
-                    <div class="show-menu-arrow selectpicker">
+                    <div class="col-xs-4" style="text-align:center">
                         <label>Quận</label>
-                        @Html.DropDownList("quan", (IEnumerable<SelectListItem>)ViewData["Quan"], "--Chọn tên quận--", new { @class = "shape" })
+                        <div>
+                            @Html.DropDownList("Quan", Quans, "Chọn quận...", new { @id = "Quan" })
+                        </div>
+                    </div>
+                    <div class="col-xs-4 " style="text-align:center">
+                        <label>Đường</label>
+                        <div>
+                            @Html.DropDownList("Duong", Duongs, "Chọn đường...", new { @id = "Duong" })
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-2">
-                    <div class="show-menu-arrow selectpicker">
-                        <label>Phường</label>
-                        @Html.DropDownList("phuong", (IEnumerable<SelectListItem>)ViewData["Phuong"], "--Chọn tên phường--", new { @class = "shape" })
-                    </div>
-                </div>
-                <div class="col-xs-2 ">
-                    <label>Đường</label>
-                    <div class="show-menu-arrow selectpicker">
-                        @Html.DropDownList("duong", (IEnumerable<SelectListItem>)ViewData["Duong"], "--Chọn tên đường--", new { @class = "shape" })
-                    </div>
-                </div>
-                <div class="col-xs-2 ">
-                    <label>Phòng ngủ</label>
-                    <div class="show-menu-arrow selectpicker">
-                        <select name="pNgu">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                </div>
-                <!--bath filter-->
-                <div class="col-xs-2 ">
-                    <label>Phòng tắm</label>
-                    <div class="show-menu-arrow selectpicker">
-                        <select name="pTam">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                </div>
-                <!--price filter-->
-                
-                <div class="col-xs-4 ">
-                   
-                
-                </div>
-                    <div class="col-xs-2 ">
-                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary-ghost mdl-button--clear" data-upgraded=",MaterialButton,MaterialRipple" style="position: relative; top: 30px; left:47%">
-                            Tìm
-                        </button>
-                    </div>
-                
-            </form>
 
+                <div class="col-xs-8" style="margin-left:-15%">
+                    <button name="search" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary-ghost mdl-button--clear" data-upgraded=",MaterialButton,MaterialRipple" style="position: relative; top: 25px; margin-left:-5%">
+                        Tìm
+                    </button>
+                </div>
+              
+            </form>
         </div>
 
     </div>
-</div>*@
+    @*end filter form*@
+</div>
 <!-------------------------------------End FILTER------------------------------------->
 <p style="font-size: 30px; color: #0096ff; text-align: center; margin-top: 20px; margin-bottom: 20px;">DỰ ÁN</p>
 <hr style="border: solid; color: #0096ff; margin-top: -20px; width: 100px" />
@@ -112,91 +84,88 @@
         @foreach (var item in Model)
         {
             <div class="col-sm-6 col-md-4">
-                <div class="thumbnail" style=" margin-bottom: 20px;">
+                <div class="thumbnail" style=" margin-bottom: 20px;height:500px">
                     <img src="~/Images/@item.Avatar" alt="@item.PropertyName" />
                     <div class="caption">
                         <h3 style="color: #0096ff; font-size: 18px; margin-top: -1px">
                             @{
-                                if (@item.PropertyName.Length >= 28 && !String.IsNullOrEmpty(@item.PropertyName) && !String.IsNullOrWhiteSpace(@item.PropertyName))
-                                    {<span>@item.PropertyName.Substring(0, 20)...</span> }
-                               
+                                if (@item.PropertyName.Length >= 30 && !String.IsNullOrEmpty(@item.PropertyName) && !String.IsNullOrWhiteSpace(@item.PropertyName))
+                                {<span>@item.PropertyName.Substring(0, 30)...</span> }
+
                                 else
-                                 { @item.PropertyName}
+                                { @item.PropertyName}
                             }
                         </h3>
                         <p>
-                           @{
-                                if (@item.Content.Length >= 65 )
-                                    {<span style="font-size:12px">@item.Content.Substring(0, 65)...</span>}
-                               
+                            @{
+                                if (@item.Content.Length >= 120)
+                                {<span style="font-size:12px">@item.Content.Substring(0, 120)...</span>}
+
                                 else
-                                 {@item.Content}
+                                {@item.Content}
                             }
-                           
+
                         </p>
-                        <p style="font-size:12px"><img src="~/Images/location-icon.png" style="width:20px; height:20px" /> @item.STREET.StreetName,@item.WARD.WardName,@item.DISTRICT.DistrictName</p>
+                        <p style="font-size:12px"><img src="~/Images/location-icon.png" style="width:20px; height:28px" /> @item.STREET.StreetName,@item.WARD.WardName,@item.DISTRICT.DistrictName</p>
                         <p style="font-size: 15px; color: #0096ff">$ @item.Price</p>
                         <p>
                             <span style="margin-right:10px"><img src="~/Images/area-icon.png" style="width:20px; height:20px" /> </span>@item.Area
                             <span style="margin-left:20px; margin-right:10px"><img src="~/Images/bedroom-icon.png" style="width:20px; height:20px" /> </span>@item.BedRoom
                             <span style="margin-left:30px; margin-right:10px"><img src="~/Images/bathroom-icon.png" style="width:20px; height:20px" /> </span>@item.BathRoom
                         </p>
-                        <div class="mh-search__buttons" style="position: relative;top: 32px;">
+                        <div class="mh-search__buttons" style="position: relative">
                             <a href="~/Project/Details/@item.ID">
                                 <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary-ghost mdl-button--clear" data-upgraded=",MaterialButton,MaterialRipple" type="button" value="Chi tiết">
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        }
     </div>
-        }
 </div>
-</div>
-<script>
- $(function() {
-    $('#slider-container').slider({
-        range: true,
-        min: 299,
-        max: 1099,
-        values: [299, 1099],
-        slide: function(event, ui) {
-            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-            var mi = ui.values[ 0 ];
-            var mx = ui.values[ 1 ];
-            filterSystem(mi, mx);
-        }
-    });
-  $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-});
+@section Scripts{
+<link href="~/Content/Home/Select2.min.css" rel="stylesheet" />
+@*<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        $('#Protyp').select2();
+        $('#Quan').select2();
+        $('#Duong').select2();
+        $('#Quan').on('change', function () {
+            $('#Duong').empty();
+            $.getJSON('/Home/GetStreet?did=' + $('#Quan').val(), function (json) {
+                $('#Duong').select2({ data: json });
+            });
 
-function filterSystem(minPrice, maxPrice) {
-$("#computers div.system").hide().filter(function() {
-    var price = parseInt($(this).data("price"), 10);
-    return price >= minPrice && price <= maxPrice;
-}).show();
-}
+        });
     </script>
-<style>
-    .thumbnail {
-        display: inline-block;
-        display: block;
-        height: 480px;
-        max-width: 100%;
-        padding: 4px;
-        line-height: 1.428571429;
-        background-color: #ffffff;
-        border: 1px solid #dddddd;
-        border-radius: 4px;
-        -webkit-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out;
-        margin-bottom: 20px;
-    }
+}
+<script>
+    $(function () {
+        $('#slider-container').slider({
+            range: true,
+            min: 299,
+            max: 1099,
+            values: [299, 1099],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                var mi = ui.values[0];
+                var mx = ui.values[1];
+                filterSystem(mi, mx);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        " - $" + $("#slider-range").slider("values", 1));
+    });
 
-    .navbar-default .navbar-nav > .active > a,
-    .navbar-default .navbar-nav > .active > a:hover,
-    .navbar-default .navbar-nav > .active > a:focus {
-        color: #0096ff;
-        background-color: #e7e7e7;
+    function filterSystem(minPrice, maxPrice) {
+        $("#computers div.system").hide().filter(function () {
+            var price = parseInt($(this).data("price"), 10);
+            return price >= minPrice && price <= maxPrice;
+        }).show();
     }
-</style>
+</script>
+
+
+

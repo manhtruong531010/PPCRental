@@ -22,6 +22,32 @@ namespace Website_BĐS.Controllers
         {
             return View();
         }
+        public ActionResult RegisterAccount()
+        {
+            return View();
+        }
+        public ActionResult Dashboard()
+        {
+                //kiem tra da kich hoat
+            if (Session["userrole"]==null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                if (  int.Parse(Session["userrole"].ToString()) == 0)
+                {
+                  
+                    return RedirectToAction("Index", "Admins/Admin");
+                }
+                else 
+                {
+                    
+                    return RedirectToAction("Index", "Agency/Agency");
+                }
+               
+
+               
+        }
+
 
         [HttpPost]
         public ActionResult Login(string email, string password) 
@@ -59,7 +85,7 @@ namespace Website_BĐS.Controllers
             Session["username"] = null;
             Session["userrole"] = null;
             Session["userid"] = null;
-            return RedirectToAction("Login", "Account");
+            return Redirect("/");
         }
 	}
 }

@@ -249,6 +249,7 @@
     <Content Include="Content\Home\animate.css" />
     <Content Include="Content\Home\bootstrap.min.css" />
     <Content Include="Content\Home\font-awesome.min.css" />
+    <Content Include="Content\Home\Select2.min.css" />
     <Content Include="Content\Home\style.css" />
     <Content Include="Content\style.css" />
     <Content Include="Images\Email-icon.png" />
@@ -259,7 +260,7 @@
     <Content Include="Images\icon-list.png" />
     <Content Include="Images\icon-notification.png" />
     <Content Include="Images\icon-user.png" />
-    <Content Include="Images\Icon.png" />
+    <Content Include="Images\IICon.png" />
     <Content Include="Images\mail-icon.png" />
     <Content Include="Images\mail1-icon.png" />
     <Content Include="Images\phone-icon.png" />
@@ -355,12 +356,24 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.11.1.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jquery.backstretch.js" />
     <Content Include="Scripts\jquery.backstretch.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\placeholder.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\retina-1.1.0.js" />
     <Content Include="Scripts\retina-1.1.0.min.js" />
     <Content Include="Scripts\scripts.js" />
@@ -368,6 +381,7 @@
     <Content Include="Scripts\waypoints.min.js" />
     <Content Include="Scripts\wow.js" />
     <Content Include="Scripts\wow.min.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -387,6 +401,8 @@
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutHomePage.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\RegisterAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
