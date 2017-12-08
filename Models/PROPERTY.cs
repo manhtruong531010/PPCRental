@@ -42,6 +42,7 @@ namespace Website_BĐS.Models
         public string Note { get; set; }
         public Nullable<System.DateTime> Updated_at { get; set; }
         public Nullable<int> Sale_ID { get; set; }
+        public string Property_Id { get; set; }
     
         public virtual DISTRICT DISTRICT { get; set; }
         public virtual PROJECT_STATUS PROJECT_STATUS { get; set; }

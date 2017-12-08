@@ -112,7 +112,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
                 PROPERTY.PropertyType_ID = p.PropertyType_ID;
                 PROPERTY.Content = p.Content;
                 PROPERTY.Street_ID = p.Street_ID;
-                PROPERTY.WARD = p.WARD;
+                PROPERTY.Ward_ID = p.Ward_ID;
                 PROPERTY.District_ID = p.District_ID;
                 PROPERTY.Price = p.Price;
 

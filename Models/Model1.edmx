@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Team33Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="team33Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ABOUTUS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="update_at" Type="datetime" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+          <Property Name="User_Update" Type="int" />
+        </EntityType>
         <EntityType Name="DISTRICT">
           <Key>
             <PropertyRef Name="ID" />
@@ -55,6 +65,7 @@
           <Property Name="Note" Type="nvarchar" MaxLength="100" />
           <Property Name="Updated_at" Type="date" />
           <Property Name="Sale_ID" Type="int" />
+          <Property Name="Property_Id" Type="nvarchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="PROPERTY_FEATURE">
           <Key>
@@ -82,6 +93,16 @@
           <Property Name="District_ID" Type="int" />
           <Property Name="Status" Type="bit" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="ID" />
@@ -94,6 +115,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="Role" Type="nvarchar" MaxLength="30" />
           <Property Name="Status" Type="bit" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="WARD">
           <Key>
@@ -236,7 +258,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Team33ModelStoreContainer">
+        <EntityContainer Name="team33ModelStoreContainer">
+          <EntitySet Name="ABOUTUS" EntityType="Self.ABOUTUS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DISTRICT" EntityType="Self.DISTRICT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FEATURE" EntityType="Self.FEATURE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROJECT_STATUS" EntityType="Self.PROJECT_STATUS" Schema="dbo" store:Type="Tables" />
@@ -244,6 +267,7 @@
           <EntitySet Name="PROPERTY_FEATURE" EntityType="Self.PROPERTY_FEATURE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROPERTY_TYPE" EntityType="Self.PROPERTY_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STREET" EntityType="Self.STREET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WARD" EntityType="Self.WARD" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_PROPERTY_DISTRICT" Association="Self.FK_PROPERTY_DISTRICT">
@@ -295,7 +319,17 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Team33Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="team33Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ABOUTU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="update_at" Type="DateTime" Precision="3" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="User_Update" Type="Int32" />
+        </EntityType>
         <EntityType Name="DISTRICT">
           <Key>
             <PropertyRef Name="ID" />
@@ -351,6 +385,7 @@
           <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Updated_at" Type="DateTime" Precision="0" />
           <Property Name="Sale_ID" Type="Int32" />
+          <Property Name="Property_Id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DISTRICT" Relationship="Self.FK_PROPERTY_DISTRICT" FromRole="PROPERTY" ToRole="DISTRICT" />
           <NavigationProperty Name="PROJECT_STATUS" Relationship="Self.FK_PROPERTY_PROJECT_STATUS" FromRole="PROPERTY" ToRole="PROJECT_STATUS" />
           <NavigationProperty Name="PROPERTY_FEATURE" Relationship="Self.FK_PROPERTY_FEATURE_PROPERTY" FromRole="PROPERTY" ToRole="PROPERTY_FEATURE" />
@@ -391,6 +426,16 @@
           <NavigationProperty Name="DISTRICT" Relationship="Self.FK_STREET_DISTRICT" FromRole="STREET" ToRole="DISTRICT" />
           <NavigationProperty Name="PROPERTies" Relationship="Self.FK_PROPERTY_STREET1" FromRole="STREET" ToRole="PROPERTY" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="ID" />
@@ -403,6 +448,7 @@
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
+          <Property Name="User_Id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PROPERTies" Relationship="Self.FK_PROPERTY_USER" FromRole="USER" ToRole="PROPERTY" />
           <NavigationProperty Name="PROPERTies1" Relationship="Self.FK_PROPERTY_USER1" FromRole="USER" ToRole="PROPERTY" />
         </EntityType>
@@ -550,6 +596,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Team33Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ABOUTUS" EntityType="Self.ABOUTU" />
           <EntitySet Name="DISTRICTs" EntityType="Self.DISTRICT" />
           <EntitySet Name="FEATUREs" EntityType="Self.FEATURE" />
           <EntitySet Name="PROJECT_STATUS" EntityType="Self.PROJECT_STATUS" />
@@ -557,6 +604,7 @@
           <EntitySet Name="PROPERTY_FEATURE" EntityType="Self.PROPERTY_FEATURE" />
           <EntitySet Name="PROPERTY_TYPE" EntityType="Self.PROPERTY_TYPE" />
           <EntitySet Name="STREETs" EntityType="Self.STREET" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="USERs" EntityType="Self.USER" />
           <EntitySet Name="WARDs" EntityType="Self.WARD" />
           <AssociationSet Name="FK_PROPERTY_DISTRICT" Association="Self.FK_PROPERTY_DISTRICT">
@@ -609,9 +657,20 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Team33ModelStoreContainer" CdmEntityContainer="Team33Entities">
+        <EntityContainerMapping StorageEntityContainer="team33ModelStoreContainer" CdmEntityContainer="Team33Entities">
+          <EntitySetMapping Name="ABOUTUS">
+            <EntityTypeMapping TypeName="team33Model.ABOUTU">
+              <MappingFragment StoreEntitySet="ABOUTUS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="User_Update" ColumnName="User_Update" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DISTRICTs">
-            <EntityTypeMapping TypeName="Team33Model.DISTRICT">
+            <EntityTypeMapping TypeName="team33Model.DISTRICT">
               <MappingFragment StoreEntitySet="DISTRICT">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
@@ -620,7 +679,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FEATUREs">
-            <EntityTypeMapping TypeName="Team33Model.FEATURE">
+            <EntityTypeMapping TypeName="team33Model.FEATURE">
               <MappingFragment StoreEntitySet="FEATURE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FeatureName" ColumnName="FeatureName" />
@@ -629,7 +688,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROJECT_STATUS">
-            <EntityTypeMapping TypeName="Team33Model.PROJECT_STATUS">
+            <EntityTypeMapping TypeName="team33Model.PROJECT_STATUS">
               <MappingFragment StoreEntitySet="PROJECT_STATUS">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Status_Name" ColumnName="Status_Name" />
@@ -638,7 +697,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROPERTies">
-            <EntityTypeMapping TypeName="Team33Model.PROPERTY">
+            <EntityTypeMapping TypeName="team33Model.PROPERTY">
               <MappingFragment StoreEntitySet="PROPERTY">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
@@ -662,11 +721,12 @@
                 <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
                 <ScalarProperty Name="Sale_ID" ColumnName="Sale_ID" />
+                <ScalarProperty Name="Property_Id" ColumnName="Property_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROPERTY_FEATURE">
-            <EntityTypeMapping TypeName="Team33Model.PROPERTY_FEATURE">
+            <EntityTypeMapping TypeName="team33Model.PROPERTY_FEATURE">
               <MappingFragment StoreEntitySet="PROPERTY_FEATURE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
@@ -675,7 +735,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROPERTY_TYPE">
-            <EntityTypeMapping TypeName="Team33Model.PROPERTY_TYPE">
+            <EntityTypeMapping TypeName="team33Model.PROPERTY_TYPE">
               <MappingFragment StoreEntitySet="PROPERTY_TYPE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CodeType" ColumnName="CodeType" />
@@ -685,7 +745,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STREETs">
-            <EntityTypeMapping TypeName="Team33Model.STREET">
+            <EntityTypeMapping TypeName="team33Model.STREET">
               <MappingFragment StoreEntitySet="STREET">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="StreetName" ColumnName="StreetName" />
@@ -694,8 +754,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="team33Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="USERs">
-            <EntityTypeMapping TypeName="Team33Model.USER">
+            <EntityTypeMapping TypeName="team33Model.USER">
               <MappingFragment StoreEntitySet="USER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -705,11 +776,12 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WARDs">
-            <EntityTypeMapping TypeName="Team33Model.WARD">
+            <EntityTypeMapping TypeName="team33Model.WARD">
               <MappingFragment StoreEntitySet="WARD">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="WardName" ColumnName="WardName" />

@@ -28,6 +28,7 @@ namespace Website_BĐS.Models
         public string Address { get; set; }
         public string Role { get; set; }
         public Nullable<bool> Status { get; set; }
+        public string User_Id { get; set; }
     
         public virtual ICollection<PROPERTY> PROPERTies { get; set; }
         public virtual ICollection<PROPERTY> PROPERTies1 { get; set; }
