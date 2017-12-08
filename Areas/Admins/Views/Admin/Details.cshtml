@@ -11,32 +11,40 @@
     <h4 style="color: #b9b4b4; text-align: center"><img src="~/Images/location-icon.png" style="width:20px; height:20px" /> @Html.DisplayFor(model => model.STREET.StreetName),@Html.DisplayFor(model => model.WARD.WardName),@Html.DisplayFor(model => model.DISTRICT.DistrictName)</h4>
     <hr />
 </div>
-<div class="row" style="margin-left:8%; margin-right:8%">
+<div class="row" style="margin-left:10%; margin-right:8%">
     <div class="col-md-8">
         @* --Images*@
-                <img src="/Images/@Model.Avatar" style="height: 400px; width: 625px" />
+        <div id="carousel-example" class="carousel slide" data-ride="carousel" style="height:400px;width:700px; margin-left:10%">
 
-            <!-- Controls -->
-        <label>Anh Chi Tiet</label>
+            <!-- Indicators -->
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox" style="height: 95%; width: 100%">
+                <div class="item active">
+                    <img src="/Images/@Model.Avatar" />
+                </div>
+            </div>
 
-
-
-        @{
-            foreach (var image in (IEnumerable<string>)ViewBag.Images)
-            {
-
-                if (image.Contains(Model.ID.ToString()))
+        </div>
+        <p style=" margin-left:65px; margin-top: 5px">
+            @{
+                foreach (var image in (IEnumerable<string>)ViewBag.Images)
                 {
 
-                    <img src="@Url.Content(image)" width="100px" />
-                }
+                    if (image.Contains(Model.ID.ToString()))
+                    {
 
+                        <img src="@Url.Content(image)" width="100px" />
+                    }
+
+                }
             }
-        }
+        </p>
+
+
 
 
         @*Details*@
-        <div class="col-xs-6" style="margin-left: 10%; background-color: #f3f1f1; width:86%; margin-top:5%; padding-top:10px">
+        <div class="col-xs-6" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%; padding-top:10px">
             <div class="col-xs-6">
                 <strong>@Html.DisplayNameFor(model => model.PROPERTY_TYPE.CodeType):</strong>
                 <span>@Html.DisplayFor(model => model.PROPERTY_TYPE.CodeType)</span>
@@ -74,13 +82,13 @@
             </div>
         </div>
         @*Tiện ích*@
-        <div class="col-md-8" style="margin-left: 10%; background-color: #f3f1f1; width:86%; margin-top:5%">
+        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%">
             <h3 style="text-align: center; padding-top:-15px">TIỆN ÍCH</h3>
             <hr style="color:#797777; border:1px solid" />
             <p style="padding-bottom:10px"></p>
         </div>
         @*Mổ tả*@
-        <div class="col-md-8" style="margin-left: 10%; background-color: #f3f1f1; width:86%; margin-top:5%">
+        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%">
             <h3 style="text-align: center; padding-top:-15px">MÔ TẢ</h3>
             <hr style="color:#797777; border:1px solid" />
             <p style="padding-bottom:10px">@Html.DisplayFor(model => model.Content)</p>

@@ -25,7 +25,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="blue" data-image="" style="background-image: url('/Areas/Admins/Image/sidebar-11726532.jpg')">
+        <div class="sidebar" data-color="blue" data-image="" style="background-image: url(/Areas/Admins/Controllers/Image/sidebar-11726532.jpg)">
             <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
             <div class="sidebar-wrapper" style="text-align: center center">
                 <div class="logo">
@@ -72,7 +72,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Table List</a>
+                        <a class="navbar-brand" href="#">Dashboard</a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-left">
@@ -113,23 +113,7 @@
                                     @Session["username"]
                                 </a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-                                        Dropdown
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
+                            
                             <li>
                                 <a href="~/Account/Logout">
                                     <p>Log out</p>

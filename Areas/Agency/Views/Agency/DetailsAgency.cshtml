@@ -17,7 +17,7 @@
 
             <!-- Indicators -->
             <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox" style="height: 400px; width: 700px">
+            <div class="carousel-inner" role="listbox" style="height: 95%; width: 100%">
                 <div class="item active">
                     <img src="/Images/@Model.Avatar" />
                 </div>
@@ -43,7 +43,7 @@
     
 
         @*Details*@
-        <div class="col-xs-6" style="margin-left: 20%; background-color: #f3f1f1; width:86%; margin-top:5%; padding-top:10px">
+        <div class="col-xs-6" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%; padding-top:10px">
             <div class="col-xs-6">
                 <strong>@Html.DisplayNameFor(model => model.PROPERTY_TYPE.CodeType):</strong>
                 <span>@Html.DisplayFor(model => model.PROPERTY_TYPE.CodeType)</span>
@@ -81,13 +81,13 @@
             </div>
         </div>
         @*Tiện ích*@
-        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:86%; margin-top:5%">
+        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%">
             <h3 style="text-align: center; padding-top:-15px">TIỆN ÍCH</h3>
             <hr style="color:#797777; border:1px solid" />
             <p style="padding-bottom:10px"></p>
         </div>
         @*Mổ tả*@
-        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:86%; margin-top:5%">
+        <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%">
             <h3 style="text-align: center; padding-top:-15px">MÔ TẢ</h3>
             <hr style="color:#797777; border:1px solid" />
             <p style="padding-bottom:10px">@Html.DisplayFor(model => model.Content)</p>

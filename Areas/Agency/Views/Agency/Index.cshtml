@@ -9,103 +9,119 @@
     }
 }
 
-<div class="col-md-12">
-    <div class="card">
-        <div class="header">
-            <img src="~/Images/icon-add.png" style="width:25px" />
-            @Html.ActionLink("Create New Property", "Create")
-        </div>
-        <div class="content table-responsive table-full-width">
-            <table class="table table-hover table-striped" id="dataTable" style="font-size: 13px; border-radius:4px">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PropertyName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Avatar)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Price)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.UnitPrice)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Area)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Created_at)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Create_post)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Updated_at)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PROJECT_STATUS.Status_Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PROPERTY_TYPE.CodeType)
-                        </th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                </thead>
+    <div class="col-md-12">
+        <div class="card">
 
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+            <div class="header">
+                <img src="~/Images/icon-add.png" style="width:25px" />
+                @Html.ActionLink("Create New Property", "Create")
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped" id="dataTable" style="font-size: 13px; border-radius:4px">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PropertyName)
-                            </td>
-                            <td>
-                                <img src="/Images/@item.Avatar" width="100px" />
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Price)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UnitPrice)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Area)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Created_at)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Create_post)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Updated_at)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PROJECT_STATUS.Status_Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PROPERTY_TYPE.CodeType)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-                                <a href="~/Agency/Agency/DetailsAgency/@item.ID">
-                                    Details
-                                </a>
-                               
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PropertyName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Avatar)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UnitPrice)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Area)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Created_at)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Create_post)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Updated_at)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PROJECT_STATUS.Status_Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PROPERTY_TYPE.CodeType)
+                            </th>
+                            <th>
+                                Action
+                            </th>
+
                         </tr>
-                    }
+                    </thead>
 
-                </tbody>
-
-            </table>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PropertyName)
+                                </td>
+                                <td>
+                                    <img src="/Images/@item.Avatar" width="100px" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Area)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Created_at)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Create_post)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Updated_at)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PROJECT_STATUS.Status_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PROPERTY_TYPE.CodeType)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID, StaId = item.Status_ID })
+                                    <a href="~/Agency/Agency/DetailsAgency/@item.ID">
+                                        Details
+                                    </a>
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                </td>  
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-
-
     </div>
-</div>
+@*<script>
+    $('#btnArchive').click(function(){
+        $.ajax({
+            url: '@Url.Action("Edit", "Edit")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                assetId: $(this).attr("assetId"),
+                relationshipContext: $(this).attr("relationshipContext"),
+            },
+            success: function(){
+                alert("success")
+            },
+            error: function () {
+                alert("error")
+            },
+
+        })
+    });
+</script>*@

@@ -9,14 +9,15 @@ namespace Website_BĐS.Areas.Agency.Controllers
 {
     public class AgencyController : Controller
     {
+        public static int idd;
         Team33Entities model = new Team33Entities();
         // GET: /Admin/ProductAdmin/
-        public ActionResult Index()
+        public ActionResult Index(int? userid)
         {
             if (Session["userid"] != null)
             {
-                var id = (int)Session["userid"];
-                var user = model.PROPERTies.OrderByDescending(x => x.USER.ID == id).ToList();
+                idd = int.Parse(Session["userid"].ToString());
+                var user = model.PROPERTies.Where(x => x.UserID == userid).OrderByDescending(x => x.ID).ToList();
                 return View(user);
             }
             else
@@ -49,13 +50,22 @@ namespace Website_BĐS.Areas.Agency.Controllers
                 return entytiy.ID;
             }
         }
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, int StaId)
         {
+            if (StaId == 2)
+            {
             var product = model.PROPERTies.FirstOrDefault(x => x.ID == id);
             ViewBag.Type = model.PROPERTY_TYPE.ToList();
             ReadList();
             return View(product);
+            }
+            else
+            {
+                return RedirectToAction("Index","Agency", new { userid = idd});
+            }
+       
         }
+
         public void ReadList()
         {
             ViewBag.ptype = model.PROPERTY_TYPE.OrderByDescending(x => x.ID).ToList();
@@ -67,67 +77,72 @@ namespace Website_BĐS.Areas.Agency.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, PROPERTY p)
+        public ActionResult Edit(int id, PROPERTY p, string submit)
         {
-            ReadList();
-            var en = model.PROPERTies.Find(p.ID);
-            var IDUser = (int)Session["userid"];
-
-            //single image
-            var PROPERTY = model.PROPERTies.FirstOrDefault(x => x.ID == id);
-            ViewBag.Type = model.PROPERTY_TYPE.ToList();
-            if (p.AvatarFile != null && p.AvatarFile.ContentLength > 0)
-            {
-                if (Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".jpg"
-                    || Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".png"
-                    || Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".gif"
-                    || Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".jpeg")
-                {
-                    string filename = Path.GetFileNameWithoutExtension(p.AvatarFile.FileName);
-                    string extention = Path.GetExtension(p.AvatarFile.FileName);
-
-                    filename = filename + DateTime.Now.ToString("yymmfff") + extention;
-                    p.Avatar = filename;
-
-                    filename = Path.Combine(Server.MapPath("~/Images"), filename);
-
-                    p.AvatarFile.SaveAs(filename);
-                    PROPERTY.Avatar = p.Avatar;
-                }
-            }
-
-            PROPERTY.ID = p.ID;
-            PROPERTY.PropertyName = p.PropertyName;
-            PROPERTY.PropertyType_ID = p.PropertyType_ID;
-            PROPERTY.Content = p.Content;
-            PROPERTY.Street_ID = p.Street_ID;
-            PROPERTY.WARD = p.WARD;
-            PROPERTY.District_ID = p.District_ID;
-            PROPERTY.Price = p.Price;
-
-            PROPERTY.UnitPrice = p.UnitPrice;
-            PROPERTY.Area = p.Area;
-            PROPERTY.BedRoom = p.BedRoom;
-            PROPERTY.BathRoom = p.BathRoom;
-            PROPERTY.PackingPlace = p.PackingPlace;
-            PROPERTY.UserID = IDUser;
-            PROPERTY.Status_ID = p.Status_ID;
-            PROPERTY.Note = p.Note;
-            PROPERTY.Updated_at = DateTime.Now;
-            PROPERTY.Sale_ID = p.Sale_ID;
-
-            model.SaveChanges();
             int ID = id;
-            return RedirectToAction("Index", "Agency");
+           
+                ReadList();
+                var en = model.PROPERTies.Find(p.ID);
 
+                //single image
+                var PROPERTY = model.PROPERTies.FirstOrDefault(x => x.ID == id);
+                ViewBag.Type = model.PROPERTY_TYPE.ToList();
+                if (p.AvatarFile != null && p.AvatarFile.ContentLength > 0)
+                {
+                    if (Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".jpg"
+                        || Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".png"
+                        || Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".gif"
+                        || Path.GetExtension(p.AvatarFile.FileName).ToLower() == ".jpeg")
+                    {
+                        string filename = Path.GetFileNameWithoutExtension(p.AvatarFile.FileName);
+                        string extention = Path.GetExtension(p.AvatarFile.FileName);
+
+                        filename = filename + DateTime.Now.ToString("yymmfff") + extention;
+                        p.Avatar = filename;
+
+                        filename = Path.Combine(Server.MapPath("~/Images"), filename);
+
+                        p.AvatarFile.SaveAs(filename);
+                        PROPERTY.Avatar = p.Avatar;
+                    }
+                }
+
+                PROPERTY.ID = p.ID;
+                PROPERTY.PropertyName = p.PropertyName;
+                PROPERTY.PropertyType_ID = p.PropertyType_ID;
+                PROPERTY.Content = p.Content;
+                PROPERTY.Street_ID = p.Street_ID;
+                PROPERTY.WARD = p.WARD;
+                PROPERTY.District_ID = p.District_ID;
+                PROPERTY.Price = p.Price;
+
+                PROPERTY.UnitPrice = p.UnitPrice;
+                PROPERTY.Area = p.Area;
+                PROPERTY.BedRoom = p.BedRoom;
+                PROPERTY.BathRoom = p.BathRoom;
+                PROPERTY.PackingPlace = p.PackingPlace;
+                if (submit == "Post") 
+                {
+                    PROPERTY.Status_ID = 1;
+                }
+                else if (submit == "Draf") 
+                {
+                    PROPERTY.Status_ID = 2;
+                }
+                
+                PROPERTY.Note = p.Note;
+                model.SaveChanges();
+                return RedirectToAction("Index", "Agency", new { userid = idd });
+
+
+            
         }
         public ActionResult Delete(int id)
         {
             var db = model.PROPERTies.Find(id);
             model.PROPERTies.Remove(db);
             model.SaveChanges();
-            int ID = id;
-            return RedirectToAction("Index", "Agency", new { id = ID });
+            return RedirectToAction("Index", "Agency", new { userid = idd });
         }
 
         [HttpPost]
@@ -135,9 +150,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
         public ActionResult Create(PROPERTY pROPERTY, List<HttpPostedFileBase> files)
         {
             ReadList();
-            var product = new PROPERTY();
-
-
+           
             try
             {
 
@@ -161,6 +174,10 @@ namespace Website_BĐS.Areas.Agency.Controllers
                 }
 
                 pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
+                pROPERTY.UnitPrice = "Vnd";
+                pROPERTY.Status_ID = 1;
+                pROPERTY.UserID = idd;
                 var modelCr = new XulyModels();
                 if (ModelState.IsValid)
                 {
@@ -189,7 +206,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
                     }
                     if (id > 0)
                     {
-                        return RedirectToAction("Index", "Agency");
+                        return RedirectToAction("Index", "Agency", new { userid = idd });
                     }
                     else
                     {
@@ -201,23 +218,48 @@ namespace Website_BĐS.Areas.Agency.Controllers
             }
             catch
             {
+                pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
+                pROPERTY.Status_ID = 1;
+                pROPERTY.UserID = idd;
+                var modelCr = new XulyModels();
+                if (ModelState.IsValid)
+                {
+                    long id = modelCr.Insert(pROPERTY);
+                    var path = "";
+                    foreach (var item in files)
+                    {
+                        if (item != null)
+                        {
+                            if (item.ContentLength > 0)
+                            {
+                                if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".png"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".gif"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
+                                {
+                                    var path0 = id + item.FileName;
+                                    path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
 
+                                    item.SaveAs(path);
+                                    ViewBag.UploadSuccess = true;
+
+                                }
+                            }
+                        }
+                    }
+                    if (id > 0)
+                    {
+                        return RedirectToAction("Index", "Agency", new { userid = idd });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Create khong thanh cong");
+                    }
+                }
             }
-            product.PropertyName = pROPERTY.PropertyName;
-            product.PropertyType_ID = pROPERTY.PropertyType_ID;
-            product.Content = pROPERTY.Content;
-            product.Street_ID = pROPERTY.Street_ID;
-            product.WARD = pROPERTY.WARD;
-            product.District_ID = pROPERTY.District_ID;
-            product.Price = pROPERTY.Price;
-            product.UnitPrice = pROPERTY.UnitPrice;
-            product.Area = pROPERTY.Area;
-            product.BedRoom = pROPERTY.BedRoom;
-            product.BathRoom = pROPERTY.BathRoom;
-            product.PackingPlace = pROPERTY.PackingPlace;
-            product.UserID = int.Parse(Session["userid"].ToString());
-            model.SaveChanges();
-            return RedirectToAction("Index", "Agency");
+          
+            return RedirectToAction("Index", "Agency", new { userid = idd });
         }
     }
 }

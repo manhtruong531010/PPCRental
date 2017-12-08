@@ -44,7 +44,7 @@ namespace Website_BĐS.Controllers
         public ActionResult Index()
         {
             //Function();
-            var property = model.PROPERTies.ToList().OrderByDescending(x => x.ID);
+            var property = model.PROPERTies.ToList().OrderByDescending(x => x.ID).Where(x => x.Status_ID == 3);
             return View(property);
         }
         public JsonResult GetStreet(int did)

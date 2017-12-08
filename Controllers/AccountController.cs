@@ -40,8 +40,7 @@ namespace Website_BĐS.Controllers
                 }
                 else 
                 {
-                    
-                    return RedirectToAction("Index", "Agency/Agency");
+                    return RedirectToAction("Index", "Agency/Agency", new { userid = int.Parse(Session["userid"].ToString()) });
                 }
                
 
@@ -72,7 +71,7 @@ namespace Website_BĐS.Controllers
                         Session["username"] = userdetail.FullName;
                         Session["userrole"] = userdetail.Role;
                         Session["userid"] = userdetail.ID;
-                        return RedirectToAction("Index", "Agency/Agency");
+                        return RedirectToAction("Index", "Agency/Agency", new { userid = userdetail.ID });
                     }
                 }
             }

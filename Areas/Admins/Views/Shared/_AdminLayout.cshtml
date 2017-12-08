@@ -25,18 +25,18 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="blue" data-image="" style="background-image: url('/Areas/Admins/Image/sidebar-11726532.jpg')">
+        <div class="sidebar" data-color="blue" data-image="" style="background-image: url(/Areas/Admins/Controllers/Image/sidebar-5.jpg); ">
             <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
             <div class="sidebar-wrapper" style="text-align: center center">
                 <div class="logo">
-                    <a style="font-size:20px">
+                    <a href="~/Home/Index" style="font-size:20px">
                         PPC Rental
                     </a>
                 </div>
                 <ul class="nav">
-                    <li>
-                        <a href="dashboard.html">
-                            <img src="~/Images/icon-dashboard.png" style="width:25px"/>
+                    <li class="active">
+                        <a href="~/Admins/Admin/Index">
+                            <img src=" ~/Images/icon-dashboard.png" style="width:25px" />
                             <span style="margin-left:4%; font-size:16px">Dashboard</span>
                         </a>
                     </li>
@@ -46,8 +46,8 @@
                             <span style="margin-left:4%; font-size:16px">User Profile</span>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="~/Views/Home/Index.cshtml">
+                    <li>
+                        <a href="~/Admins/Admin/Index">
                             <img src="~/Images/icon-list.png" style="width:25px" />
                             <span style="margin-left:4%; font-size:16px">List of Agency</span>
                         </a>
@@ -55,7 +55,7 @@
                     <li>
                         <a href="Index.cshtml">
                             <img src="~/Images/icon-list.png" style="width:25px" />
-                            <span style="margin-left:4%; font-size:16px">List Agency Project</span>
+                            <span style="margin-left:4%; font-size:16px">List All Property</span>
                         </a>
                     </li>
                     <li>
@@ -119,23 +119,7 @@
                                     @Session["username"]
                                 </a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-                                        Dropdown
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
+                           
                             <li>
                                 <a href="~/Account/Logout">
                                     <p>Log out</p>

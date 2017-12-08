@@ -11,6 +11,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
     public class AdminController : Controller
     {
        Team33Entities model = new Team33Entities();
+       public static int UserID;
         // GET: /Admin/ProductAdmin/
         public ActionResult Index()
         {
@@ -20,7 +21,8 @@ namespace Website_BĐS.Areas.Admins.Controllers
         public ActionResult ViewProperty(int id)
         {
             //ViewBag.Type = model.PROPERTY_TYPE.ToList();
-            var product = model.PROPERTies.Where(x => x.USER.ID == id).ToList();
+            UserID = id;
+            var product = model.PROPERTies.Where(x => x.USER.ID == id && x.Status_ID != 2 ).ToList();
             return View(product);
         }
         public ActionResult Create()
@@ -42,12 +44,9 @@ namespace Website_BĐS.Areas.Admins.Controllers
      
         public ActionResult Create(PROPERTY pROPERTY, List<HttpPostedFileBase> files)
         {
-            ReadList();
-            var product = new PROPERTY();
-
+            ReadList();         
             try
             {
-
                 string filename = Path.GetFileNameWithoutExtension(pROPERTY.AvatarFile.FileName);
                 string extension = Path.GetExtension(pROPERTY.AvatarFile.FileName);
                 filename = filename + "checkcheck" + DateTime.Now.ToString("yymmssfff") + extension;
@@ -59,19 +58,22 @@ namespace Website_BĐS.Areas.Admins.Controllers
                 {
                     string s2 = "~/Images/ImagesNull.png";
                     pROPERTY.AvatarFile.SaveAs(s2);
-                    //property.ImageFile2.SaveAs(filename2);
                 }
                 else
                 {
-                    //property.ImageFile2.SaveAs(filename2);
                     pROPERTY.AvatarFile.SaveAs(filename);
                 }
 
                 pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
-                var model = new XulyModels();
+                pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
+                pROPERTY.UnitPrice = "Vnd";
+                pROPERTY.Status_ID = 3;
+                pROPERTY.UserID = int.Parse(Session["userid"].ToString());
+                pROPERTY.Sale_ID = int.Parse(Session["userid"].ToString());
+                var modelCr = new XulyModels();
                 if (ModelState.IsValid)
                 {
-                    long id = model.Insert(pROPERTY);
+                    long id = modelCr.Insert(pROPERTY);
                     var path = "";
                     foreach (var item in files)
                     {
@@ -96,7 +98,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
                     }
                     if (id > 0)
                     {
-                        return RedirectToAction("Index", "Agency");
+                        return RedirectToAction("ViewProperty", "Admin", new { id = UserID});
                     }
                     else
                     {
@@ -108,11 +110,48 @@ namespace Website_BĐS.Areas.Admins.Controllers
             }
             catch
             {
+                pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
+                pROPERTY.Status_ID = 1;
+                pROPERTY.UserID = int.Parse(Session["userid"].ToString());
+                pROPERTY.Sale_ID = int.Parse(Session["userid"].ToString());
+                var modelCr = new XulyModels();
+                if (ModelState.IsValid)
+                {
+                    long id = modelCr.Insert(pROPERTY);
+                    var path = "";
+                    foreach (var item in files)
+                    {
+                        if (item != null)
+                        {
+                            if (item.ContentLength > 0)
+                            {
+                                if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".png"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".gif"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
+                                {
+                                    var path0 = id + item.FileName;
+                                    path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
 
+                                    item.SaveAs(path);
+                                    ViewBag.UploadSuccess = true;
+
+                                }
+                            }
+                        }
+                    }
+                    if (id > 0)
+                    {
+                        return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Create khong thanh cong");
+                    }
+                }
             }
-
-
-            return View(pROPERTY);
+            return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -127,8 +166,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
             var db = model.PROPERTies.Find(id);
             model.PROPERTies.Remove(db);
             model.SaveChanges();
-            int ID = id;
-            return RedirectToAction("Index", "Agency", new { id= ID});
+            return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
         }
         public void ReadList()
         {
@@ -182,22 +220,23 @@ namespace Website_BĐS.Areas.Admins.Controllers
             PROPERTY.BedRoom = p.BedRoom;
             PROPERTY.BathRoom = p.BathRoom;
             PROPERTY.PackingPlace = p.PackingPlace;
-            
             PROPERTY.Status_ID = p.Status_ID;
             PROPERTY.Note = p.Note;
             PROPERTY.Updated_at = DateTime.Now;
-            PROPERTY.Sale_ID = p.Sale_ID;
+            PROPERTY.Sale_ID = int.Parse(Session["userid"].ToString());
 
             model.SaveChanges();
-            int ID = id;
-            return RedirectToAction("ViewProperty", "Admin", new { id = ID});
+            return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
 
         }
        
         public ActionResult Details(int id)
         {
             int ID = id;
-            return RedirectToAction("Details","Home", new { id = ID});
+            var project = model.PROPERTies.FirstOrDefault(x => x.ID == id);
+            ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
+                            .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+            return View(project);
 
         }
         

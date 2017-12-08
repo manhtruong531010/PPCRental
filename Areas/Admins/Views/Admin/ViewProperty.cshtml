@@ -24,19 +24,16 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Price)
-                            <img src="~/Images/icon-arrowdown.jpg" style="width:3px; height:6px" />
-                            <img src="~/Images/icon-arrowup.png" style="width:3px; height:6px" />
+                            @*<img src="~/Images/icon-arrowdown.jpg" style="width:3px; height:6px" />
+                            <img src="~/Images/icon-arrowup.png" style="width:3px; height:6px" />*@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.UnitPrice)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Area)
-                            <img src="~/Images/icon-arrowdown.jpg" style="width:3px; height:6px" />
-                            <img src="~/Images/icon-arrowup.png" style="width:3px; height:6px" />
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Created_at)
+                            @*<img src="~/Images/icon-arrowdown.jpg" style="width:3px; height:6px" />
+                            <img src="~/Images/icon-arrowup.png" style="width:3px; height:6px" />*@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Create_post)
@@ -76,11 +73,9 @@
                                 @Html.DisplayFor(modelItem => item.UnitPrice)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Area)
+                                @Html.DisplayFor(modelItem => item.Area)m2
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Created_at)
-                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Create_post)
                             </td>
