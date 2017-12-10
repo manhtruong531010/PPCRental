@@ -27,6 +27,11 @@ namespace Website_BĐS.Areas.Admins.Controllers
             var product = model.PROPERTies.Where(x => x.USER.ID == id && x.Status_ID != 2 ).OrderByDescending(x => x.ID).ToList();
             return View(product);
         }
+        public ActionResult ViewListallProperty()
+        {
+            var product = model.PROPERTies.Where(x => x.Status_ID != 2).OrderByDescending(x => x.ID).ToList();
+            return View(product);
+        }
         public JsonResult GetStreet(int did)
         {
             var db = new Team33Entities();

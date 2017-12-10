@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Website_BĐS.Models.PROPERTY>
+
+@{
+    ViewBag.Title = "ViewProperty";
+    Layout = "~/Areas/Admins/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <img src="~/Images/icon-add.png" style="width:25px" />
+            @Html.ActionLink("Create New Property", "Create")
+        </div>
+        <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped " id="dataTable1" style=" font-size: 13px; border-radius:4px">
+
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Avatar)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                            @*<img src="~/Images/icon-arrowdown.jpg" style="width:3px; height:6px" />
+                                <img src="~/Images/icon-arrowup.png" style="width:3px; height:6px" />*@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Area)
+                            @*<img src="~/Images/icon-arrowdown.jpg" style="width:3px; height:6px" />
+                                <img src="~/Images/icon-arrowup.png" style="width:3px; height:6px" />*@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Create_post)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Note)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Updated_at)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PROJECT_STATUS.Status_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PROPERTY_TYPE.CodeType)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropertyName)
+                            </td>
+                            <td>
+                                <img src="/Images/@item.Avatar" width="100px" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Area)m2
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Create_post)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Note)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Updated_at)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PROJECT_STATUS.Status_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PROPERTY_TYPE.CodeType)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                                <a href="~/Agency/Agency/DetailsAgency/@item.ID">
+                                    Details
+                                </a>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script>
+        $('#dataTable1').dataTable({
+            "ordering": false
+        });
+    </script>
+}
