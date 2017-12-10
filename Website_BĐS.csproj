@@ -289,6 +289,7 @@
     <Content Include="Content\Admin.css\light-bootstrap-dashboard.css" />
     <Content Include="Content\Admin.css\pe-icon-7-stroke.css" />
     <Content Include="Content\Admin.css\sb-admin.css" />
+    <Content Include="Content\Admin.css\Select2.min.css" />
     <Content Include="Content\Admin.css\Site.css" />
     <Content Include="Content\Home\animate.css" />
     <Content Include="Content\Home\bootstrap.min.css" />

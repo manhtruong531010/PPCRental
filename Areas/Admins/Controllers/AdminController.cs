@@ -10,6 +10,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
 
     public class AdminController : Controller
     {
+        public static int idd;
        Team33Entities model = new Team33Entities();
        public static int UserID;
         // GET: /Admin/ProductAdmin/
@@ -22,8 +23,29 @@ namespace Website_BĐS.Areas.Admins.Controllers
         {
             //ViewBag.Type = model.PROPERTY_TYPE.ToList();
             UserID = id;
+            idd = id;
             var product = model.PROPERTies.Where(x => x.USER.ID == id && x.Status_ID != 2 ).OrderByDescending(x => x.ID).ToList();
             return View(product);
+        }
+        public JsonResult GetStreet(int did)
+        {
+            var db = new Team33Entities();
+            var streets = db.STREETs.Where(s => s.District_ID == did);
+            return Json(streets.Select(s => new
+            {
+                id = s.ID,
+                text = s.StreetName
+            }), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetWard(int did)
+        {
+            var db = new Team33Entities();
+            var wards = db.WARDs.Where(s => s.District_ID == did);
+            return Json(wards.Select(s => new
+            {
+                id = s.ID,
+                text = s.WardName
+            }), JsonRequestBehavior.AllowGet);
         }
         public ActionResult Create()
         {
@@ -44,6 +66,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
      
         public ActionResult Create(PROPERTY pROPERTY, List<HttpPostedFileBase> files)
         {
+            idd = int.Parse(Session["userid"].ToString());
             ReadList();         
             try
             {
@@ -68,8 +91,8 @@ namespace Website_BĐS.Areas.Admins.Controllers
                 pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
                 pROPERTY.UnitPrice = "Vnd";
                 pROPERTY.Status_ID = 3;
-                pROPERTY.UserID = int.Parse(Session["userid"].ToString());
-                pROPERTY.Sale_ID = int.Parse(Session["userid"].ToString());
+                pROPERTY.UserID = idd;
+                pROPERTY.Sale_ID = idd;
                 var modelCr = new XulyModels();
                 if (ModelState.IsValid)
                 {
@@ -113,8 +136,8 @@ namespace Website_BĐS.Areas.Admins.Controllers
                 pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                 pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
                 pROPERTY.Status_ID = 1;
-                pROPERTY.UserID = int.Parse(Session["userid"].ToString());
-                pROPERTY.Sale_ID = int.Parse(Session["userid"].ToString());
+                pROPERTY.UserID = idd;
+                pROPERTY.Sale_ID = idd;
                 var modelCr = new XulyModels();
                 if (ModelState.IsValid)
                 {
@@ -215,7 +238,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
             PROPERTY.Ward_ID = p.Ward_ID;
             PROPERTY.District_ID = p.District_ID;
             PROPERTY.Price = p.Price;
-            PROPERTY.UnitPrice = p.UnitPrice;
+            PROPERTY.UnitPrice = "Vnd";
             PROPERTY.Area = p.Area;
             PROPERTY.BedRoom = p.BedRoom;
             PROPERTY.BathRoom = p.BathRoom;

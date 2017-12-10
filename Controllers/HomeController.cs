@@ -84,7 +84,7 @@ namespace Website_BĐS.Controllers
             }
             if (Duong != null)
             {
-                pro = pro.Where(x => x.Street_ID == Duong).ToList();
+                pro = pro.Where(x => x.STREET.ID == Duong).ToList();
             }
             //Function();
             //var search = model.PROPERTies.ToList().Where(x => x.DISTRICT.DistrictName == quan || x.STREET.StreetName == duong || x.PROPERTY_TYPE.Description == loaiDA);

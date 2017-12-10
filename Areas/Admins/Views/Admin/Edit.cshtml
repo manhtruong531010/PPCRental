@@ -1,8 +1,13 @@
-﻿@model Website_BĐS.Models.PROPERTY
+﻿@using Website_BĐS.Models;
+@model Website_BĐS.Models.PROPERTY
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admins/Views/Shared/_AdminLayout.cshtml";
+    Team33Entities db = new Team33Entities();
+    var Phuongs = new SelectList(db.WARDs.Take(0), "ID", "WardName");
+    var Quans = new SelectList(db.DISTRICTs, "ID", "DistrictName");
+    var Duongs = new SelectList(db.STREETs.Take(0), "ID", "StreetName");
 }
 
 @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -17,7 +22,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PropertyName, new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.TextBoxFor(model => model.PropertyName, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.PropertyName, new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.PropertyName)
             </div>
         </div>
@@ -38,9 +43,9 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PropertyType_ID, "PropertyType_ID", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PropertyType_ID, "PropertyType", new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.DropDownList("PropertyType_ID", new SelectList(ViewBag.ptype, "ID", "CodeType", Model.PROPERTY_TYPE), new { @class = "form-control" })
+                @Html.DropDownList("PropertyType_ID", new SelectList(ViewBag.ptype, "ID", "CodeType", Model.PROPERTY_TYPE), new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.PropertyType_ID)
             </div>
         </div>
@@ -48,59 +53,54 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @row = 5, @style = "width:500px; height:200px"})
+                @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @row = 5, @style = "width:500px; height:200px", required = "required" })
                 @Html.ValidationMessageFor(model => model.Content)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Street_ID, "Street_ID", new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.DropDownList("Street_ID", new SelectList(ViewBag.street, "ID", "StreetName", Model.STREET), new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Street_ID)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ward_ID, "Ward_ID", new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.DropDownList("Ward_ID", new SelectList(ViewBag.ward, "ID", "WardName", Model.WARD), new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Ward_ID)
-            </div>
-        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.District_ID, "District_ID", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.District_ID, "District", new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.DropDownList("District_ID", new SelectList(ViewBag.district, "ID", "DistrictName", Model.DISTRICT), new { @class = "form-control" })
+                @Html.DropDownList("District_ID", new SelectList(ViewBag.district, "ID", "DistrictName", Model.DISTRICT), new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.District_ID)
 
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.Ward_ID, "Ward", new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("Ward_ID", new SelectList(ViewBag.ward, "ID", "WardName", Model.WARD), new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.Ward_ID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Street_ID, "Street", new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("Street_ID", new SelectList(ViewBag.street, "ID", "StreetName", Model.STREET), new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.Street_ID)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Price, new { @class = "form-control", @type = "number" })
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control", @type = "number", required = "required" })
                 @Html.ValidationMessageFor(model => model.Price)
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.UnitPrice, new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.UnitPrice, new { @class = "form-control " })
-                @Html.ValidationMessageFor(model => model.UnitPrice)
-            </div>
-        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Area, new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.TextBoxFor(model => model.Area, new { @class = "form-control", @type = "number" }) 
+                @Html.TextBoxFor(model => model.Area, new { @class = "form-control", @type = "number", required = "required" }) 
                 @Html.ValidationMessageFor(model => model.Area)
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.BedRoom, new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.TextBoxFor(model => model.BedRoom, new { @class = "form-control", @type = "number" })
+                @Html.TextBoxFor(model => model.BedRoom, new { @class = "form-control", @type = "number", required = "required" })
                 @Html.ValidationMessageFor(model => model.BedRoom)
             </div>
         </div>
@@ -108,7 +108,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.BathRoom, new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.TextBoxFor(model => model.BathRoom, new { @class = "form-control", @type = "number" })
+                @Html.TextBoxFor(model => model.BathRoom, new { @class = "form-control", @type = "number", required = "required" })
                 @Html.ValidationMessageFor(model => model.BathRoom)
             </div>
            
@@ -116,7 +116,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PackingPlace, new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-                @Html.TextBoxFor(model => model.PackingPlace, new { @class = "form-control", @type = "number" })
+                @Html.TextBoxFor(model => model.PackingPlace, new { @class = "form-control", @type = "number", required = "required" })
                 @Html.ValidationMessageFor(model => model.PackingPlace)
             </div>
         </div>
@@ -129,7 +129,7 @@
             </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Status_ID, "Status_ID", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Status_ID, "Status", new { @class = "control-label col-md-2" })
             <div class="col-md-4">
                 @Html.DropDownList("Status_ID", new SelectList(ViewBag.status, "ID", "Status_Name", Model.PROJECT_STATUS), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Status_ID)
@@ -155,4 +155,36 @@
 }
 
 
+@section Scripts{
+    <link href="~/Content/Admin.css/Select2.min.css" rel="stylesheet" />
+    @*<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        var data = {
+            id: null,
+            text: 'Chọn đường...'
+        };
+        var newOption = new Option(data.text, data.id, false, true);
+        var data1 = {
+            id: null,
+            text: 'Chọn phường...'
+        };
+        var newOption1 = new Option(data.text, data.id, false, true);
 
+        $('#Protyp').select2();
+        $('#District_ID').select2();
+        $('#Ward_ID').select2();
+        $('#Street_ID').select2();
+        $('#District_ID').on('change', function () {
+            $('#Street_ID').empty();
+            $.getJSON('/Admin/GetStreet?did=' + $('#District_ID').val(), function (json) {
+                $('#Street_ID').select2({ data: json }).append(newOption);
+            });
+            $('#Ward_ID').empty();
+            $.getJSON('/Admin/GetWard?did=' + $('#District_ID').val(), function (json) {
+                $('#Ward_ID').select2({ data: json }).append(newOption1);
+            });
+        });
+
+    </script>
+    }

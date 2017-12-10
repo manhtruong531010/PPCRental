@@ -25,7 +25,26 @@ namespace Website_BĐS.Areas.Agency.Controllers
                 return View();
             }
         }
-
+        public JsonResult GetStreet(int did)
+        {
+            var db = new Team33Entities();
+            var streets = db.STREETs.Where(s => s.District_ID == did);
+            return Json(streets.Select(s => new
+            {
+                id = s.ID,
+                text = s.StreetName
+            }), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetWard(int did)
+        {
+            var db = new Team33Entities();
+            var wards = db.WARDs.Where(s => s.District_ID == did);
+            return Json(wards.Select(s => new
+            {
+                id = s.ID,
+                text = s.WardName
+            }), JsonRequestBehavior.AllowGet);
+        }
         public ActionResult DetailsAgency(int id)
         {
             int ID = id;
@@ -115,8 +134,6 @@ namespace Website_BĐS.Areas.Agency.Controllers
                 PROPERTY.Ward_ID = p.Ward_ID;
                 PROPERTY.District_ID = p.District_ID;
                 PROPERTY.Price = p.Price;
-
-                PROPERTY.UnitPrice = p.UnitPrice;
                 PROPERTY.Area = p.Area;
                 PROPERTY.BedRoom = p.BedRoom;
                 PROPERTY.BathRoom = p.BathRoom;
