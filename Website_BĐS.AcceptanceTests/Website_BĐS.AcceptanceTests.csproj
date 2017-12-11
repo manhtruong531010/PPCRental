@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Website_BĐS.AcceptanceTests</RootNamespace>
     <AssemblyName>Website_BĐS.AcceptanceTests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>051f8bfa</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -104,12 +104,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UC003_ViewDetailProperty.feature</DependentUpon>
     </Compile>
+    <Compile Include="Feature\UC004_EditProperty.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UC004_EditProperty.feature</DependentUpon>
+    </Compile>
     <Compile Include="Feature\UC005_ViewListOfAgencyProperty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UC005_ViewListOfAgencyProperty.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\UC0004_EditProperty.cs" />
     <Compile Include="Steps\UC001_FilterPropertySteps.cs" />
     <Compile Include="Steps\UC002_ViewListOfPropertySteps.cs" />
     <Compile Include="Steps\UC003_ViewDetailPropertySteps.cs" />
@@ -130,6 +136,10 @@
     <None Include="Feature\UC003_ViewDetailProperty.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UC003_ViewDetailProperty.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Feature\UC004_EditProperty.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UC004_EditProperty.feature.cs</LastGenOutput>
     </None>
     <None Include="Feature\UC005_ViewListOfAgencyProperty.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

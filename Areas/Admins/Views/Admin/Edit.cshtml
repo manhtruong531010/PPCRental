@@ -21,7 +21,7 @@
         @Html.HiddenFor(model => model.ID)
         <div class="form-group">
             @Html.LabelFor(model => model.PropertyName, new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
+            <div class="col-md-4" id=" propertyname">
                 @Html.TextBoxFor(model => model.PropertyName, new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.PropertyName)
             </div>
@@ -44,7 +44,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.PropertyType_ID, "PropertyType", new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
+            <div class="col-md-4" id=" propertyType">
                 @Html.DropDownList("PropertyType_ID", new SelectList(ViewBag.ptype, "ID", "CodeType", Model.PROPERTY_TYPE), new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.PropertyType_ID)
             </div>
@@ -52,7 +52,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Content, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10" id=" content">
                 @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @row = 5, @style = "width:500px; height:200px", required = "required" })
                 @Html.ValidationMessageFor(model => model.Content)
             </div>
@@ -61,7 +61,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.District_ID, "District", new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
+            <div class="col-md-4" id=" district">
                 @Html.DropDownList("District_ID", new SelectList(ViewBag.district, "ID", "DistrictName", Model.DISTRICT), new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.District_ID)
 
@@ -69,14 +69,14 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Ward_ID, "Ward", new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
+            <div class="col-md-4" id=" ward">
                 @Html.DropDownList("Ward_ID", new SelectList(ViewBag.ward, "ID", "WardName", Model.WARD), new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.Ward_ID)
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Street_ID, "Street", new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
+            <div class="col-md-4" id=" street">
                 @Html.DropDownList("Street_ID", new SelectList(ViewBag.street, "ID", "StreetName", Model.STREET), new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.Street_ID)
             </div>
@@ -84,7 +84,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
+            <div class="col-md-4" id=" price">
                 @Html.TextBoxFor(model => model.Price, new { @class = "form-control", @type = "number", required = "required" })
                 @Html.ValidationMessageFor(model => model.Price)
             </div>
