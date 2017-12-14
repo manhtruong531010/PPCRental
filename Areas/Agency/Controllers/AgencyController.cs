@@ -164,7 +164,7 @@ namespace Website_BĐS.Areas.Agency.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PROPERTY pROPERTY, List<HttpPostedFileBase> files)
+        public ActionResult Create(PROPERTY pROPERTY, List<HttpPostedFileBase> files, string submit)
         {
             ReadList();
            
@@ -193,7 +193,16 @@ namespace Website_BĐS.Areas.Agency.Controllers
                 pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                 pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
                 pROPERTY.UnitPrice = "Vnd";
-                pROPERTY.Status_ID = 1;
+
+                if (submit == "Post")
+                {
+                    pROPERTY.Status_ID = 1;
+                }
+                else if (submit == "Draf")
+                {
+                    pROPERTY.Status_ID = 2;
+                }
+                
                 pROPERTY.UserID = idd;
                 var modelCr = new XulyModels();
                 if (ModelState.IsValid)
@@ -237,7 +246,16 @@ namespace Website_BĐS.Areas.Agency.Controllers
             {
                 pROPERTY.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                 pROPERTY.Create_post = DateTime.Parse(DateTime.Now.ToShortDateString());
-                pROPERTY.Status_ID = 1;
+
+                if (submit == "Post")
+                {
+                    pROPERTY.Status_ID = 1;
+                }
+                else if (submit == "Draf")
+                {
+                    pROPERTY.Status_ID = 2;
+                }
+
                 pROPERTY.UserID = idd;
                 var modelCr = new XulyModels();
                 if (ModelState.IsValid)

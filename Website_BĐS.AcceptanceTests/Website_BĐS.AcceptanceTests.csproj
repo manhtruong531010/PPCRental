@@ -45,6 +45,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentAssertions, Version=4.19.4.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.4\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.19.4.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.4\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Holf.AllForOne, Version=1.0.0.27, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AllForOne.1.0.0.27\lib\Holf.AllForOne.dll</HintPath>
       <Private>True</Private>
@@ -70,6 +78,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,6 +101,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drivers\BookDetails\BookDetailsDriver.cs" />
+    <Compile Include="Drivers\Home\HomeDriver.cs" />
+    <Compile Include="Drivers\Project\ProjectDriver.cs" />
+    <Compile Include="Drivers\Project\SearchResultState.cs" />
+    <Compile Include="Drivers\Search\SearchDriver.cs" />
+    <Compile Include="Drivers\Search\SearchResultState.cs" />
+    <Compile Include="Drivers\ShoppingCart\ShoppingCartDriver.cs" />
     <Compile Include="Feature\UC001_FilterProperty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +139,11 @@
     <Compile Include="Steps\UC002_ViewListOfPropertySteps.cs" />
     <Compile Include="Steps\UC003_ViewDetailPropertySteps.cs" />
     <Compile Include="Steps\UC005_ViewListOfAgencyPropertySteps.cs" />
+    <Compile Include="Support\ActionResultExtensions.cs" />
+    <Compile Include="Support\CatalogContext.cs" />
+    <Compile Include="Support\DatabaseTools.cs" />
+    <Compile Include="Support\HttpContextStub.cs" />
+    <Compile Include="Support\ReferenceProjectList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -147,7 +171,24 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Website_BĐS.AcceptanceTests.Common\Website_BĐS.AcceptanceTests.Common.csproj">
+      <Project>{bdb8f1ba-da5a-4bec-ada4-d96bae0efc30}</Project>
+      <Name>Website_BĐS.AcceptanceTests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Website_BĐS.csproj">
+      <Project>{9f8988a7-1a5c-4b66-90ff-953932a93ef2}</Project>
+      <Name>Website_BĐS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Website_BĐS.UITests.Selenium\Website_BĐS.UITests.Selenium.csproj">
+      <Project>{66bc6354-8ee8-4658-a159-2bd8a9530823}</Project>
+      <Name>Website_BĐS.UITests.Selenium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Website_BĐS.UnitTests\Website_BĐS.UnitTests.csproj">
+      <Project>{a23d905b-37cd-4eb3-bf31-486b67ad0fad}</Project>
+      <Name>Website_BĐS.UnitTests</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
