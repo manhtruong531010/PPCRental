@@ -4,11 +4,11 @@ using FluentAssertions;
 
 namespace Website_BĐS.AcceptanceTests.Support
 {
-    public class ReferenceProjectList : Dictionary<string, PROPERTY>
+    public class ReferenceProertyList : Dictionary<string, PROPERTY>
     {
-        public PROPERTY GetById(string projectId)
+        public PROPERTY GetById(string propertyId)
         {
-            return this[projectId.Trim()].Should().NotBeNull()
+            return this[propertyId.Trim()].Should().NotBeNull()
                                       .And.Subject.Should().BeOfType<PROPERTY>().Which;
         }
     }

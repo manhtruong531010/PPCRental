@@ -1,59 +1,59 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using Website_BĐS.Controllers;
-using Website_BĐS.Models;
-using Website_BĐS.AcceptanceTests.Support;
-using Website_BĐS.AcceptanceTests.Common;
-using TechTalk.SpecFlow;
+﻿//using System.Collections.Generic;
+//using System.Linq;
+//using System.Web.Mvc;
+//using Website_BĐS.Controllers;
+//using Website_BĐS.Models;
+//using Website_BĐS.AcceptanceTests.Support;
+//using Website_BĐS.AcceptanceTests.Common;
+//using TechTalk.SpecFlow;
 
-namespace BookShop.AcceptanceTests.Drivers.Search
-{
-    public class SearchDriver
-    {
-        /*       private ActionResult _result;
+//namespace Website_BĐS.AcceptanceTests.Drivers.Search
+//{
+//    public class SearchDriver
+//    {
+//        /*       private ActionResult _result;
 
-               public SearchDriver(ActionResult result)
-               {
-                   _result = result;
-               }
-        */
-        private readonly SearchResultState _state;
+//               public SearchDriver(ActionResult result)
+//               {
+//                   _result = result;
+//               }
+//        */
+//        private readonly SearchResultState _state;
 
-        public SearchDriver(SearchResultState state)
-        {
-            _state = state;
-        }
+//        public SearchDriver(SearchResultState state)
+//        {
+//            _state = state;
+//        }
 
-        public void Search(string searchTerm)
-        {
-            var controller = new CatalogController();
-            _state.ActionResult = controller.Search(searchTerm);
-        }
+//        public void Search(string searchTerm)
+//        {
+//            var controller = new CatalogController();
+//            _state.ActionResult = controller.Search(searchTerm);
+//        }
 
-        public void ShowBooks(string expectedTitlesString)
-        {
-            //Arrange
-            var expectedTitles = from t in expectedTitlesString.Split(',')
-                                    select t.Trim().Trim('\'');
+//        public void ShowBooks(string expectedTitlesString)
+//        {
+//            //Arrange
+//            var expectedTitles = from t in expectedTitlesString.Split(',')
+//                                    select t.Trim().Trim('\'');
 
-            //Action
-            var ShownBooks = _state.ActionResult.Model<IEnumerable<Book>>();
+//            //Action
+//            var ShownBooks = _state.ActionResult.Model<IEnumerable<Book>>();
 
-            //Assert
-            BookAssertions.HomeScreenShouldShow(ShownBooks, expectedTitles);
-        }
+//            //Assert
+//            BookAssertions.HomeScreenShouldShow(ShownBooks, expectedTitles);
+//        }
 
-        public void ShowBooks(Table expectedBooks)
-        {
-            //Arrange
-            var expectedTitles = expectedBooks.Rows.Select(r => r["Title"]);
+//        public void ShowBooks(Table expectedBooks)
+//        {
+//            //Arrange
+//            var expectedTitles = expectedBooks.Rows.Select(r => r["Title"]);
 
-            //Action
-            var ShownBooks = _state.ActionResult.Model<IEnumerable<Book>>();
+//            //Action
+//            var ShownBooks = _state.ActionResult.Model<IEnumerable<Book>>();
 
-            //Assert
-            BookAssertions.HomeScreenShouldShowInOrder(ShownBooks, expectedTitles);
-        }
-    }
-}
+//            //Assert
+//            BookAssertions.HomeScreenShouldShowInOrder(ShownBooks, expectedTitles);
+//        }
+//    }
+//}

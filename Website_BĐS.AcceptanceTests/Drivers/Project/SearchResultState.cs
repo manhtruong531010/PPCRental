@@ -1,9 +1,9 @@
-﻿using System.Web.Mvc;
+﻿//using System.Web.Mvc;
 
-namespace Website_BĐS.AcceptanceTests.Drivers.Project
-{
-    class SearchResultState
-    {
-        public ActionResult ActionResult { get; set; }
-    }
-}
+//namespace Website_BĐS.AcceptanceTests.Drivers.Project
+//{
+//    class SearchResultState
+//    {
+//        public ActionResult ActionResult { get; set; }
+//    }
+//}

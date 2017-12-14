@@ -13,54 +13,54 @@ namespace Website_BĐS.AcceptanceTests.Drivers.Project
 {
     public class ProjectDriver
     {
-        private readonly SearchResultState _result;
+        //private readonly SearchResultState _result;
 
-        public ProjectDriver(SearchResultState result)
-        {
-            _result = result;
-        }
-        public void InsertProjecttoDB(TechTalk.SpecFlow.Table givenProjects)
-        {
-            using (var db = new Team33Entities())
-            {
-                foreach (var row in givenProjects.Rows)
-                {
-                    var property = new PROPERTY
-                    {
-                        PropertyName = row["PropertyName"],
-                        PropertyType_ID = db.PROPERTY_TYPE.FirstOrDefault(d => d.CodeType == row["PropertyType"]).ID,
+        //public ProjectDriver(SearchResultState result)
+        //{
+        //    _result = result;
+        //}
+        //public void InsertProjecttoDB(TechTalk.SpecFlow.Table givenProjects)
+        //{
+        //    using (var db = new Team33Entities())
+        //    {
+        //        foreach (var row in givenProjects.Rows)
+        //        {
+        //            var property = new PROPERTY
+        //            {
+        //                PropertyName = row["PropertyName"],
+        //                PropertyType_ID = db.PROPERTY_TYPE.FirstOrDefault(d => d.CodeType == row["PropertyType"]).ID,
 
-                    };
+        //            };
 
-                    //_context.ReferenceBooks.Add(
-                    //        givenProjects.Header.Contains("Id") ? row["Id"] : givenProjects.,
-                    //        property);
+        //            //_context.ReferenceBooks.Add(
+        //            //        givenProjects.Header.Contains("Id") ? row["Id"] : givenProjects.,
+        //            //        property);
 
-                    //db.Books.Add(book);
-                }
+        //            //db.Books.Add(book);
+        //        }
 
-                db.SaveChanges();
-            }
-        }
+        //        db.SaveChanges();
+        //    }
+        //}
 
-        public void Navigate(string mail, string pass)
-        {
-            using (var controller = new AccountController())
-            {
-                _result.ActionResult = controller.Login(mail,pass);
-            }
-        }
+        //public void Navigate(string mail, string pass)
+        //{
+        //    using (var controller = new AccountController())
+        //    {
+        //        _result.ActionResult = controller.Login(mail,pass);
+        //    }
+        //}
 
 
-        public void ShowList(Table expectednameList)
-        {
-            //Arrange
-            var expected = expectednameList.Rows.Select(x => x["PropertyName"]);
+        //public void ShowList(Table expectednameList)
+        //{
+        //    //Arrange
+        //    var expected = expectednameList.Rows.Select(x => x["PropertyName"]);
 
-            var ShownName = _result.ActionResult.Model<IEnumerable<PROPERTY>>();
+        //    var ShownName = _result.ActionResult.Model<IEnumerable<PROPERTY>>();
 
-            //Assert
-            PropertyAssertions.HomeScreenShouldShow(ShownName, expectednameList);
-        }
+        //    //Assert
+        //    PropertyAssertions.HomeScreenShouldShow(ShownName, expectednameList);
+        //}
     }
 }

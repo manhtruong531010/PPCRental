@@ -4,7 +4,7 @@ using System.Threading;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Website_BĐS.AcceptanceTests.Drivers.Project;
+using Website_BĐS.AcceptanceTests.Drivers.BookDetails;
 
 namespace Website_BĐS.AcceptanceTests.Steps
 {
@@ -12,26 +12,28 @@ namespace Website_BĐS.AcceptanceTests.Steps
     public class UC003_ViewDetailPropertySteps
     {
         private IWebDriver driver = new FirefoxDriver();
-        private readonly ProjectDriver _projectDriver;
+        //private readonly ProjectDriver _projectDriver;
+        private readonly PropertyDetailsDriver _PropertyDetailsDriver;
 
-        public UC003_ViewDetailPropertySteps(ProjectDriver driver) { _projectDriver = driver; }
+        public UC003_ViewDetailPropertySteps(PropertyDetailsDriver driver) { _PropertyDetailsDriver = driver; }
 
         [Given(@"the following property")]
         public void GivenTheFollowingProperty(Table table)
         {
-            ScenarioContext.Current.Pending();
+            _PropertyDetailsDriver.InsertPropertyToDB(table);
         }
 
-        [When(@"I click button Chi tiet")]
-        public void WhenIClickButtonChiTiet()
+        [When(@"I click button Chi tiet '(.*)'")]
+        public void WhenIClickButtonChiTiet(string p0)
         {
-            ScenarioContext.Current.Pending();
+            _PropertyDetailsDriver.OpenPropertyDetails(p0);
         }
+
 
         [Then(@"I should see property infomation")]
         public void ThenIShouldSeePropertyInfomation(Table table)
         {
-            ScenarioContext.Current.Pending();
+            _PropertyDetailsDriver.ShowPropertyDetails(table);
         }
 
 

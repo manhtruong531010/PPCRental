@@ -15,30 +15,30 @@ namespace Website_BĐS.AcceptanceTests.StepDefintions
     public class LoginSteps
     {
         //private IWebDriver driver = new FirefoxDriver();
-        private readonly ProjectDriver _projectDriver;
+        //private readonly ProjectDriver _projectDriver;
 
 
-        public LoginSteps(ProjectDriver driver) { _projectDriver = driver; }
+        //public LoginSteps(ProjectDriver driver) { _projectDriver = driver; }
 
 
-        [Given(@"the following project")]
-        public void GivenTheFollowingProject(Table givenProjects)
-        {
-            _projectDriver.InsertProjecttoDB(givenProjects);
-        }
+        //[Given(@"the following project")]
+        //public void GivenTheFollowingProject(Table givenProjects)
+        //{
+        //    _projectDriver.InsertProjecttoDB(givenProjects);
+        //}
 
-        [When(@"I input '(.*)' and '(.*)' into Login page")]
-        public void WhenIInputAndIntoLoginPage(string email, string password)
-        {
-            _projectDriver.Navigate(email, password);
+        //[When(@"I input '(.*)' and '(.*)' into Login page")]
+        //public void WhenIInputAndIntoLoginPage(string email, string password)
+        //{
+        //    _projectDriver.Navigate(email, password);
 
-        }
+        //}
 
-        [Then(@"I should see my own projects")]
-        public void ThenIShouldSeeMyOwnProjects(Table expectedList)
-        {
-            _projectDriver.ShowList(expectedList);
-        }
+        //[Then(@"I should see my own projects")]
+        //public void ThenIShouldSeeMyOwnProjects(Table expectedList)
+        //{
+        //    _projectDriver.ShowList(expectedList);
+        //}
 
         //[Given(@"Toi dang o home page")]
         //public void GivenToiDangOHomePage()
