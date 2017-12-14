@@ -132,7 +132,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "2"});
+                        "0"});
             table1.AddRow(new string[] {
                         "ViLa Q7",
                         "images172300301.jpg",
@@ -155,7 +155,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "2"});
+                        "0"});
             table1.AddRow(new string[] {
                         "PIS Serviced Apartment – Style",
                         "sunshine-benthanh-cityhome-10-stamp174228283.jpg",
@@ -178,7 +178,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "3"});
+                        "0"});
             table1.AddRow(new string[] {
                         "Vinhomes Central Park L2 – Duong’s Apartment",
                         "PIS_7389-Edit-stamp.jpg",
@@ -201,7 +201,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "3"});
+                        "0"});
             table1.AddRow(new string[] {
                         "Saigon Pearl Ruby Block",
                         "PIS_7319-Edit-stamp.jpg",
@@ -224,7 +224,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "2"});
+                        "0"});
 #line 9
  testRunner.Given("the following project", ((string)(null)), table1, "Given ");
 #line hidden
@@ -242,10 +242,85 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
 this.FeatureBackground();
 #line 18
- testRunner.When("I select the Project Type data field and I press Search Property", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I select the Project Type is \'Apartment\' data field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
- testRunner.Then("The results should appear the projects selected \'PIS Top Apartment1555445,Saigon " +
-                    "Pearl Ruby Block\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I select the District is \'Chương Mỹ\'l,", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+ testRunner.And("I select the Street is \'Thôn Chúc Đồng\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+ testRunner.And("I click Find button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "PropertyName",
+                        "Avarta",
+                        "Images",
+                        "PropertyType",
+                        "Content",
+                        "Street",
+                        "Ward",
+                        "District",
+                        "Price",
+                        "UnitPrice",
+                        "Area",
+                        "BedRoom",
+                        "BathRoom",
+                        "PackingPlace",
+                        "UserID",
+                        "Create_at",
+                        "Create_post",
+                        "Status",
+                        "Note",
+                        "Update_at",
+                        "Sale_ID"});
+            table2.AddRow(new string[] {
+                        "PIS Top Apartment",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "a17584387317552326.jpg,AvatarNone17100766117552327.png,images1709523917552328.jpg" +
+                            ",",
+                        "Apartment",
+                        "The surrounding neighborhood is very much localized with a great number of local " +
+                            "shops.",
+                        "Thôn Chúc Đồng",
+                        "Đại Yên",
+                        "Chương Mỹ",
+                        "10000",
+                        "VND",
+                        "120m2",
+                        "3",
+                        "2",
+                        "1",
+                        "1",
+                        "2017-11-09",
+                        "2017-11-09",
+                        "Đã duyệt",
+                        "Done",
+                        "2017-11-23",
+                        "0"});
+            table2.AddRow(new string[] {
+                        "Saigon Pearl Ruby Block",
+                        "PIS_7319-Edit-stamp.jpg",
+                        "images17423697317334243.jpg,PIS_4622-Edit17463610217334244.jpg,",
+                        "Apartment",
+                        "Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker " +
+                            "Area, 23/9 park…",
+                        "Thôn Chúc Đồng",
+                        "Đại Yên",
+                        "Chương Mỹ",
+                        "30000",
+                        "VND",
+                        "130m2",
+                        "3",
+                        "5",
+                        "1",
+                        "4",
+                        "2017-11-09",
+                        "2017-11-09",
+                        "Đã duyệt",
+                        "Done",
+                        "2017-11-23",
+                        "0"});
+#line 22
+ testRunner.Then("The results should appear the following table", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

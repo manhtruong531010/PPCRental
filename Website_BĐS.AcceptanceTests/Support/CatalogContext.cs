@@ -4,9 +4,9 @@
     {
         public CatalogContext()
         {
-            ReferenceBooks = new ReferenceProjectList();
+            ReferenceProperty = new ReferenceProjectList();
         }
 
-        public ReferenceProjectList ReferenceBooks { get; set; }
+        public ReferenceProjectList ReferenceProperty { get; set; }
     }
 }

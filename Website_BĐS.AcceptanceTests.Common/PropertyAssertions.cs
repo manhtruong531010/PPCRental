@@ -15,7 +15,7 @@ namespace Website_BĐS.AcceptanceTests.Common
             foundProperty.Select(x => x.PropertyName).Should().Contain(expectedTitles);
         }
 
-        public static void HomeScreenShouldShow(IEnumerable<PROPERTY> shownBooks, string expectedTitle)
+        public static void HomeScreenShouldShow(IEnumerable<PROPERTY> shownBooks, IEnumerable<string> expectedTitle)
         {
             shownBooks.Select(b => b.PropertyName).Should().Contain(expectedTitle);
         }
