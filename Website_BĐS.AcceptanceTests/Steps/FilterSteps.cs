@@ -34,7 +34,6 @@ namespace Website_BĐS.AcceptanceTests.Steps
         [When(@"I select the Street is '(.*)'")]
         public void WhenISelectTheStreetIs(string p0)
         {
-            
         }
         
         [When(@"I click Find button")]
