@@ -28,19 +28,36 @@ namespace BookShop.AcceptanceTests.Drivers.BookDetails
                 {
                     var Property = new PROPERTY
                     {
+                        PropertyName = row["PropertyName"],
+                        Avatar = row["Avarta"],
+                        Images = row["Images"],
+                        Content = row["Content"],
+                        PropertyType_ID = int.Parse(row["PropertyType_ID"]),
+                        Street_ID = int.Parse(row["Street_ID"]),
+                        Ward_ID = int.Parse(row["Ward_ID"]),
+                        District_ID = int.Parse(row["District_ID"]),
+                        Price = int.Parse(row["Price"]),
+                        UnitPrice = row["UnitPrice"],
+                        Area = row["Area"],
+                        BedRoom = int.Parse(row["BedRoom"]),
+                        BathRoom = int.Parse(row["BathRoom"]),
+                        PackingPlace = int.Parse(row["PackingPlace"]),
+                        UserID = int.Parse(row["UserID"]),
+                        Created_at = DateTime.Parse(row["Created_at"]),
+                        Create_post = DateTime.Parse(row["Create_post"]),
+                        Status_ID = int.Parse(row["Status"]),
+                        Note = row["Note"],
+                        Updated_at = DateTime.Parse(row["Update_at"]),
+                        Sale_ID = int.Parse(row["Sale_ID"])
 
-                        //Author = row["Author"],
-                        //Title = row["Title"],
-                        //Price = Books.Header.Contains("Price")
-                        //    ? Convert.ToDecimal(row["Price"])
-                        //    : BookDefaultPrice
+
                     };
 
                     _context.ReferenceBooks.Add(
-                            Books.Header.Contains("Id") ? row["Id"] : book.Title,
-                            book);
+                         givenProjects.Header.Contains("Id") ? row["Id"] : property.PropertyName,
+                         property);
 
-                    db.Books.Add(book);
+                    db.PROPERTies.Add(property);
                 }
 
                 db.SaveChanges();
