@@ -21,16 +21,16 @@ namespace BookShop.AcceptanceTests.Drivers.Home
             }
         }
 
-        public void ShowBooks(Table expectedBooks)
-        => ShowBooks(expectedBooks.Rows.Select(r => r["Title"]));
+        //public void ShowBooks(Table expectedBooks)
+        //=> ShowBooks(expectedBooks.Rows.Select(r => r["Title"]));
 
-        public void ShowBooks(IEnumerable<string> expectedTitles)
-        {
-            //Act
-            var shownBooks = _result.Model<IEnumerable<Book>>();
+        //public void ShowBooks(IEnumerable<string> expectedTitles)
+        //{
+        //    //Act
+        //    var shownBooks = _result.Model<IEnumerable<Book>>();
 
-            //Assert
-            BookAssertions.HomeScreenShouldShow(shownBooks, expectedTitles);
-        }
+        //    //Assert
+        //    BookAssertions.HomeScreenShouldShow(shownBooks, expectedTitles);
+        //}
     }
 }

@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Diagnostics;
 using OpenQA.Selenium;
-using Website_BĐS.UITests.Selenium.
+using Website_BĐS.UITests.Selenium.Config;
 using System.IO;
 using System.Linq;
 using System.Web;

@@ -4,6 +4,7 @@ using System.Threading;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Website_BĐS.AcceptanceTests.Drivers.Project;
 
 namespace Website_BĐS.AcceptanceTests.Steps
 {
@@ -11,19 +12,29 @@ namespace Website_BĐS.AcceptanceTests.Steps
     public class UC003_ViewDetailPropertySteps
     {
         private IWebDriver driver = new FirefoxDriver();
-        [Given(@"Toi dang o tai trang Home")]
-        public void GivenToiDangOTaiTrangHome()
+        private readonly ProjectDriver _projectDriver;
+
+        public UC003_ViewDetailPropertySteps(ProjectDriver driver) { _projectDriver = driver; }
+
+        [Given(@"the following property")]
+        public void GivenTheFollowingProperty(Table table)
         {
-            driver.Navigate().GoToUrl("http://localhost:31286/");
-            Thread.Sleep(1000);
+            ScenarioContext.Current.Pending();
         }
-        
-        [When(@"Toi nhan chon nut Chi tiet")]
-        public void WhenToiNhanChonNutChiTiet()
+
+        [When(@"I click button Chi tiet")]
+        public void WhenIClickButtonChiTiet()
         {
-            driver.FindElement(By.Id("btn-detail")).Click();
-            Thread.Sleep(5);
+            ScenarioContext.Current.Pending();
         }
+
+        [Then(@"I should see property infomation")]
+        public void ThenIShouldSeePropertyInfomation(Table table)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+
         
        
     }

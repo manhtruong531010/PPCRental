@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Website_BĐS.Models;
-using BookShop.AcceptanceTests.Support;
+using Website_BĐS.AcceptanceTests.Support;
 using Website_BĐS.Controllers;
 using FluentAssertions;
 using TechTalk.SpecFlow;
@@ -20,19 +20,20 @@ namespace BookShop.AcceptanceTests.Drivers.BookDetails
             _context = context;
         }
         
-        public void InsertBookToDB(Table Books)
+        public void InsertPropertyToDB(Table property)
         {
-            using (var db = new DatabaseContext())
+            using (var db = new Team33Entities())
             {
-                foreach (var row in Books.Rows)
+                foreach (var row in property.Rows)
                 {
-                    var book = new Book
+                    var Property = new PROPERTY
                     {
-                        Author = row["Author"],
-                        Title = row["Title"],
-                        Price = Books.Header.Contains("Price")
-                            ? Convert.ToDecimal(row["Price"])
-                            : BookDefaultPrice
+
+                        //Author = row["Author"],
+                        //Title = row["Title"],
+                        //Price = Books.Header.Contains("Price")
+                        //    ? Convert.ToDecimal(row["Price"])
+                        //    : BookDefaultPrice
                     };
 
                     _context.ReferenceBooks.Add(

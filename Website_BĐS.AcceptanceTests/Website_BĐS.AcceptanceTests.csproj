@@ -172,6 +172,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Website_BĐS.AcceptanceTests.Common\Website_BĐS.AcceptanceTests.Common.csproj">
       <Project>{bdb8f1ba-da5a-4bec-ada4-d96bae0efc30}</Project>
       <Name>Website_BĐS.AcceptanceTests.Common</Name>
@@ -188,9 +191,6 @@
       <Project>{a23d905b-37cd-4eb3-bf31-486b67ad0fad}</Project>
       <Name>Website_BĐS.UnitTests</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets')" />
