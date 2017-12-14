@@ -1,5 +1,9 @@
-﻿Feature: UC002_ViewListOfProperty 
-	Agency can see their property in admin page
+﻿#add @web tag to run the search tests with Selenium automation
+
+#@automated
+@web
+Feature: Filter
+	I can filter property
 
 Background: 
 	Given the following project
@@ -10,12 +14,7 @@ Background:
 	| Vinhomes Central Park L2 – Duong’s Apartment | PIS_7389-Edit-stamp.jpg                          | images1702244617042862.jpg,                                                        | Villa        | Vinhomes Central Park is a new development that is in the heart of everything that Ho Chi Minh has to offer. | Số 39          | TT Xuân Mai | Chương Mỹ | 110000 | VND       | 150m2 | 4       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Đã duyệt | Done | 2017-11-23 | 3       |
 	| Saigon Pearl Ruby Block                      | PIS_7319-Edit-stamp.jpg                          | images17423697317334243.jpg,PIS_4622-Edit17463610217334244.jpg,                    | Apartment    | Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker Area, 23/9 park…            | Thôn Chúc Đồng | Đại Yên     | Chương Mỹ | 30000  | VND       | 130m2 | 3       | 5        | 1            | 4      | 2017-11-09 | 2017-11-09  | Đã duyệt | Done | 2017-11-23 | 2       |
 
-#@automated
-#@web
-Scenario: View List of Project
-	When I input 'lythihuyenchau@gmail.com' and '1' into Login page
-	Then I should see my own projects
-	| Property Name                                |
-	| PIS Top Apartment                            |
-	| ViLa Q7                                      |
-	| Vinhomes Central Park L2 – Duong’s Apartment |
+Scenario: Filter Project for Type field	 
+	When I select the Project Type data field and I press Search Property
+	Then The results should appear the projects selected 'PIS Top Apartment1555445,Saigon Pearl Ruby Block'
+
