@@ -8,7 +8,7 @@ namespace Website_BĐS.Controllers
 {
     public class HomeController : Controller
     {
-        List<SelectListItem> type, district, street;
+        //List<SelectListItem> type, district, street;
       public  Team33Entities model = new Team33Entities();
         //public void Function()
         //{

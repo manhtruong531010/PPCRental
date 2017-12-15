@@ -25,7 +25,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
-#line 1 "UC005_ViewListOfAgencyProperty.feature"
+#line 1 "UC006_PostProperty.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext

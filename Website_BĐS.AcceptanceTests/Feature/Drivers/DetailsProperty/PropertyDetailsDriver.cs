@@ -13,7 +13,7 @@ namespace Website_BĐS.AcceptanceTests.Drivers.BookDetails
 {
     public class PropertyDetailsDriver
     {
-        private const decimal BookDefaultPrice = 10;
+        //private const decimal BookDefaultPrice = 10;
         private readonly CatalogContext _context;
         private ActionResult _result;
 
@@ -31,7 +31,7 @@ namespace Website_BĐS.AcceptanceTests.Drivers.BookDetails
                     var Property = new PROPERTY
                     {
                         PropertyName = row["PropertyName"],
-                        Avatar = row["Avarta"],
+                        Avatar = row["Avatar"],
                         Images = row["Images"],
                         Content = row["Content"],
                         PropertyType_ID = int.Parse(row["PropertyType_ID"]),
@@ -47,9 +47,9 @@ namespace Website_BĐS.AcceptanceTests.Drivers.BookDetails
                         UserID = int.Parse(row["UserID"]),
                         Created_at = DateTime.Parse(row["Created_at"]),
                         Create_post = DateTime.Parse(row["Create_post"]),
-                        Status_ID = int.Parse(row["Status"]),
+                        Status_ID = int.Parse(row["Status_ID"]),
                         Note = row["Note"],
-                        Updated_at = DateTime.Parse(row["Update_at"]),
+                        Updated_at = DateTime.Parse(row["Updated_at"]),
                         Sale_ID = int.Parse(row["Sale_ID"])
 
 

@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Website_BĐS.AcceptanceTests</RootNamespace>
     <AssemblyName>Website_BĐS.AcceptanceTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>051f8bfa</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -128,13 +128,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drivers\Home\HomeDriver.cs" />
-    <Compile Include="Drivers\DetailsProperty\PropertyDetailsDriver.cs" />
-    <Compile Include="Drivers\Project\ProjectDriver.cs" />
-    <Compile Include="Drivers\Project\SearchResultState.cs" />
-    <Compile Include="Drivers\Search\SearchDriver.cs" />
-    <Compile Include="Drivers\Search\SearchResultState.cs" />
-    <Compile Include="Drivers\ShoppingCart\ShoppingCartDriver.cs" />
+    <Compile Include="Feature\Drivers\Home\HomeDriver.cs" />
+    <Compile Include="Feature\Drivers\DetailsProperty\PropertyDetailsDriver.cs" />
+    <Compile Include="Feature\Drivers\Project\ProjectDriver.cs" />
+    <Compile Include="Feature\Drivers\Project\SearchResultState.cs" />
+    <Compile Include="Feature\Drivers\Search\SearchDriver.cs" />
+    <Compile Include="Feature\Drivers\Search\SearchResultState.cs" />
+    <Compile Include="Feature\Drivers\ShoppingCart\ShoppingCartDriver.cs" />
+    <Compile Include="Feature\UC006_PostProperty.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UC006_PostProperty.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\UC005_ViewListOfAgencyProperty.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UC005_ViewListOfAgencyProperty.feature</DependentUpon>
+    </Compile>
     <Compile Include="Feature\UC001_FilterProperty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,17 +165,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UC004_EditProperty.feature</DependentUpon>
     </Compile>
-    <Compile Include="Feature\UC005_ViewListOfAgencyProperty.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UC005_ViewListOfAgencyProperty.feature</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\UC004_EditProperty.cs" />
     <Compile Include="Steps\UC001_FilterPropertySteps.cs" />
     <Compile Include="Steps\UC002_ViewListOfPropertySteps.cs" />
     <Compile Include="Steps\UC003_ViewDetailPropertySteps.cs" />
     <Compile Include="Steps\UC005_ViewListOfAgencyPropertySteps.cs" />
+    <Compile Include="Steps\UC006_PostProperty.cs" />
     <Compile Include="Support\ActionResultExtensions.cs" />
     <Compile Include="Support\CatalogContext.cs" />
     <Compile Include="Support\DatabaseTools.cs" />
@@ -175,6 +181,14 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Feature\UC006_PostProperty.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UC006_PostProperty.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Feature\UC005_ViewListOfAgencyProperty.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UC005_ViewListOfAgencyProperty.feature.cs</LastGenOutput>
     </None>
     <None Include="Feature\UC001_FilterProperty.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -191,10 +205,6 @@
     <None Include="Feature\UC004_EditProperty.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UC004_EditProperty.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Feature\UC005_ViewListOfAgencyProperty.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>UC005_ViewListOfAgencyProperty.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

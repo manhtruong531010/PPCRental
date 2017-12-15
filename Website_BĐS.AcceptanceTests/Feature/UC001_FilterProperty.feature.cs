@@ -226,7 +226,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "2017-11-23",
                         "0"});
 #line 8
- testRunner.Given("the following project", ((string)(null)), table1, "Given ");
+ testRunner.Given("the following project list", ((string)(null)), table1, "Given ");
 #line hidden
         }
         

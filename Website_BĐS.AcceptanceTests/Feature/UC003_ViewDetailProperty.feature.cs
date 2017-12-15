@@ -89,12 +89,12 @@ namespace Website_BĐS.AcceptanceTests.Feature
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
-                        "Avarta",
+                        "Avatar",
                         "Images",
                         "PropertyType_ID",
                         "Content",
                         "Street_ID",
-                        "Ward)ID",
+                        "Ward_ID",
                         "District_ID",
                         "Price",
                         "UnitPrice",
@@ -103,11 +103,11 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "BathRoom",
                         "PackingPlace",
                         "UserID",
-                        "Create_at",
+                        "Created_at",
                         "Create_post",
-                        "Status",
+                        "Status_ID",
                         "Note",
-                        "Update_at",
+                        "Updated_at",
                         "Sale_ID"});
             table1.AddRow(new string[] {
                         "PIS Top Apartment",
@@ -129,7 +129,7 @@ namespace Website_BĐS.AcceptanceTests.Feature
                         "1",
                         "2017-11-09",
                         "2017-11-09",
-                        "Đã duyệt",
+                        "3",
                         "Done",
                         "2017-11-23",
                         "2"});
@@ -154,7 +154,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
-                        "Avarta",
+                        "Avatar",
                         "Images",
                         "PropertyType_ID",
                         "Content",

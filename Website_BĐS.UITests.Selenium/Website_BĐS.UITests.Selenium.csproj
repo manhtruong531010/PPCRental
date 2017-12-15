@@ -180,7 +180,6 @@
     <Compile Include="Support\SeleniumStepsBase.cs" />
     <Compile Include="Support\SeleniumSupport.cs" />
     <Compile Include="Support\WebDriverExtensions.cs" />
-    <Compile Include="UC002_ViewListOfPropertySteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
