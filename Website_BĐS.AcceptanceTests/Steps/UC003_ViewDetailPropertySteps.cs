@@ -16,7 +16,11 @@ namespace Website_BĐS.AcceptanceTests.Steps
         //private readonly ProjectDriver _projectDriver;
         private readonly PropertyDetailsDriver _PropertyDetailsDriver;
 
-        public UC003_ViewDetailPropertySteps(PropertyDetailsDriver driver) { _PropertyDetailsDriver = driver; }
+        public UC003_ViewDetailPropertySteps(PropertyDetailsDriver driver) 
+        { 
+            _PropertyDetailsDriver = driver; 
+
+        }
 
         [Given(@"the following property")]
         public void GivenTheFollowingProperty(Table table)

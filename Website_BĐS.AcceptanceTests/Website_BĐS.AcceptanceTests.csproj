@@ -128,13 +128,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Feature\Drivers\Home\HomeDriver.cs" />
-    <Compile Include="Feature\Drivers\DetailsProperty\PropertyDetailsDriver.cs" />
-    <Compile Include="Feature\Drivers\Project\ProjectDriver.cs" />
-    <Compile Include="Feature\Drivers\Project\SearchResultState.cs" />
-    <Compile Include="Feature\Drivers\Search\SearchDriver.cs" />
-    <Compile Include="Feature\Drivers\Search\SearchResultState.cs" />
-    <Compile Include="Feature\Drivers\ShoppingCart\ShoppingCartDriver.cs" />
+    <Compile Include="Drivers\Home\HomeDriver.cs" />
+    <Compile Include="Drivers\DetailsProperty\PropertyDetailsDriver.cs" />
+    <Compile Include="Drivers\Project\ProjectDriver.cs" />
+    <Compile Include="Drivers\Project\SearchResultState.cs" />
+    <Compile Include="Drivers\Search\SearchDriver.cs" />
+    <Compile Include="Drivers\Search\SearchResultState.cs" />
+    <Compile Include="Drivers\ShoppingCart\ShoppingCartDriver.cs" />
     <Compile Include="Feature\UC006_PostProperty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
