@@ -296,8 +296,32 @@ namespace Website_BĐS.Areas.Admins.Controllers
                 return View(cre);
             }
 
-        }    
-        
+        }
+
+        [HttpGet]
+        public ActionResult EditPropetyType(int id)
+        {
+            var product = model.PROPERTY_TYPE.FirstOrDefault(x => x.ID == id);
+            ViewBag.Type = model.PROPERTY_TYPE.ToList();
+            ReadList();
+            return View(product);
+        }
+        [HttpPost]
+        public ActionResult EditPropetyType(int id, PROPERTY_TYPE p)
+        {
+            ReadList();
+            var en = model.PROPERTY_TYPE.Find(p.ID);
+            var Type = model.PROPERTY_TYPE.FirstOrDefault(x => x.ID == id);
+
+            Type.ID = p.ID;
+            Type.CodeType = p.CodeType;
+            Type.Description = p.Description;
+            Type.Status = p.Status;
+            model.SaveChanges();
+            int ID = id;
+            return RedirectToAction("Index1", new { id = ID });
+
+        }
    }
 
 }

@@ -395,6 +395,7 @@
     <Content Include="Areas\Admins\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admins\Views\Admin\ViewListallProperty.cshtml" />
     <Content Include="Areas\Admins\Views\Admin\CreatePropertyType.cshtml" />
+    <Content Include="Areas\Admins\Views\Admin\EditPropetyType.cshtml" />
     <None Include="Scripts\Admin.js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.min.js" />
