@@ -86,5 +86,28 @@ namespace Website_BĐS.Controllers
             Session["userid"] = null;
             return Redirect("/");
         }
+
+        [HttpGet]
+        public ActionResult ChangePassword(int id)
+        {
+            var userdetail = db.USERs.Where(x => x.ID == 3).FirstOrDefault();
+            return View(userdetail);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(int id, string oldpass, string newpass, string conpass)
+        {
+            var userdetail = db.USERs.Where(x => x.ID == 3).FirstOrDefault();
+            if (userdetail.Password == oldpass)
+            {
+                if (newpass == conpass)
+                {
+                    userdetail.Password = newpass;
+                    db.SaveChanges();
+                    ViewBag.mess = "success";
+                }
+            }
+            return View();
+        }
 	}
 }
