@@ -135,15 +135,15 @@
     <Compile Include="Drivers\Search\SearchDriver.cs" />
     <Compile Include="Drivers\Search\SearchResultState.cs" />
     <Compile Include="Drivers\ShoppingCart\ShoppingCartDriver.cs" />
-    <Compile Include="Feature\UC006_PostProperty.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UC006_PostProperty.feature</DependentUpon>
-    </Compile>
     <Compile Include="Feature\UC005_ViewListOfAgencyProperty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UC005_ViewListOfAgencyProperty.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\UC006_PostProperty.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UC006_PostProperty.feature</DependentUpon>
     </Compile>
     <Compile Include="Feature\UC001_FilterProperty.feature.cs">
       <AutoGen>True</AutoGen>
@@ -182,13 +182,13 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Feature\UC006_PostProperty.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>UC006_PostProperty.feature.cs</LastGenOutput>
-    </None>
     <None Include="Feature\UC005_ViewListOfAgencyProperty.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UC005_ViewListOfAgencyProperty.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Feature\UC006_PostProperty.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UC006_PostProperty.feature.cs</LastGenOutput>
     </None>
     <None Include="Feature\UC001_FilterProperty.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

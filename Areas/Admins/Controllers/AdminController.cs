@@ -267,8 +267,36 @@ namespace Website_BĐS.Areas.Admins.Controllers
             return View(project);
 
         }
-        
-            
+
+        public ActionResult CreatePropertyType()
+        {
+            PROPERTY_TYPE cre = new PROPERTY_TYPE();
+            return View(cre);
+        }
+        [HttpPost]
+        public ActionResult CreatePropertyType(PROPERTY_TYPE p)
+        {
+            ReadList();
+            PROPERTY_TYPE cre = new PROPERTY_TYPE();
+            cre.ID = p.ID;
+            cre.CodeType = p.CodeType;
+            cre.Description = p.Description;
+            cre.Status = p.Status;
+            var test = model.PROPERTY_TYPE.Where(x => x.CodeType == cre.CodeType && x.Description == cre.Description);
+            if (test.Count() == 0)
+            {
+
+                model.PROPERTY_TYPE.Add(cre);
+                model.SaveChanges();
+                return RedirectToAction("Index1", new { p.ID });
+            }
+            else
+            {
+                ViewBag.CreateError = "Đã tồn tại";
+                return View(cre);
+            }
+
+        }    
         
    }
 

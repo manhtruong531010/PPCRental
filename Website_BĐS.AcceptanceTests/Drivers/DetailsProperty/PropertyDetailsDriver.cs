@@ -34,20 +34,20 @@ namespace Website_BĐS.AcceptanceTests.Drivers.BookDetails
                         Avatar = row["Avatar"],
                         Images = row["Images"],
                         Content = row["Content"],
-                        PropertyType_ID = int.Parse(row["PropertyType_ID"]),
-                        Street_ID = int.Parse(row["Street_ID"]),
-                        Ward_ID = int.Parse(row["Ward_ID"]),
-                        District_ID = int.Parse(row["District_ID"]),
+                        PropertyType_ID = db.PROPERTY_TYPE.ToList().FirstOrDefault(x => x.CodeType == row["PropertyType"]).ID,
+                        Street_ID = db.STREETs.ToList().FirstOrDefault(x => x.StreetName == row["Street"]).ID,
+                        Ward_ID = db.WARDs.ToList().FirstOrDefault(x => x.WardName == row["Ward"]).ID,
+                        District_ID = db.DISTRICTs.ToList().FirstOrDefault(x => x.DistrictName == row["District"]).ID,
                         Price = int.Parse(row["Price"]),
                         UnitPrice = row["UnitPrice"],
                         Area = row["Area"],
                         BedRoom = int.Parse(row["BedRoom"]),
                         BathRoom = int.Parse(row["BathRoom"]),
                         PackingPlace = int.Parse(row["PackingPlace"]),
-                        UserID = int.Parse(row["UserID"]),
+                        UserID = db.USERs.ToList().FirstOrDefault(x => x.Email == row["UserID"]).ID,
                         Created_at = DateTime.Parse(row["Created_at"]),
                         Create_post = DateTime.Parse(row["Create_post"]),
-                        Status_ID = int.Parse(row["Status_ID"]),
+                        Status_ID = db.PROJECT_STATUS.ToList().FirstOrDefault(x => x.Status_Name == row["Status"]).ID,
                         Note = row["Note"],
                         Updated_at = DateTime.Parse(row["Updated_at"]),
                         Sale_ID = int.Parse(row["Sale_ID"])
@@ -76,21 +76,7 @@ namespace Website_BĐS.AcceptanceTests.Drivers.BookDetails
 
             //Assert
             actualPropertyDetails.Should().Match<PROPERTY>(
-                b => b.PropertyName == expectedPropertyDetails["PropertyName"]
-                && b.Avatar == expectedPropertyDetails["Avatar"]
-                && b.Images == expectedPropertyDetails["Images"]
-                && b.PropertyType_ID == int.Parse(expectedPropertyDetails["PropertyType_ID"])
-                && b.Content == expectedPropertyDetails["Content"]
-                && b.Street_ID == int.Parse(expectedPropertyDetails["Street_ID"])
-                && b.Ward_ID == int.Parse(expectedPropertyDetails["Ward_ID"])
-                && b.District_ID == int.Parse(expectedPropertyDetails["District_ID"])
-                && b.Price == int.Parse(expectedPropertyDetails["Price"])
-                && b.UnitPrice == expectedPropertyDetails["UnitPrice"]
-                && b.Area == expectedPropertyDetails["Area"]
-                && b.BedRoom == int.Parse(expectedPropertyDetails["BedRoom"])
-                && b.BathRoom == int.Parse(expectedPropertyDetails["BathRoom"])
-                && b.PackingPlace == int.Parse(expectedPropertyDetails["PackingPlace"])
-                && b.Create_post == DateTime.Parse(expectedPropertyDetails["Create_post"]));
+                b => b.PropertyName == expectedPropertyDetails["PropertyName"]);
         }
         public void OpenPropertyDetails(String propertyId)
         {

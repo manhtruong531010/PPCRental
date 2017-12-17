@@ -313,6 +313,7 @@
     <Content Include="Content\Home\Select2.min.css" />
     <Content Include="Content\Home\style.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Images\add.png" />
     <Content Include="Images\Email-icon.png" />
     <Content Include="Images\icon-add.png" />
     <Content Include="Images\icon-arrowdown.jpg" />
@@ -350,6 +351,7 @@
     <Content Include="Images\PIS_7319-Edit-stamp.jpg" />
     <Content Include="Images\PIS_7389-Edit-stamp.jpg" />
     <Content Include="Images\PIS_7432-Edit-stamp.jpg" />
+    <Content Include="Images\registrationicon.png" />
     <Content Include="Images\sunshine-benthanh-cityhome-10-stamp.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -392,6 +394,7 @@
     <Content Include="Areas\Admins\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admins\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admins\Views\Admin\ViewListallProperty.cshtml" />
+    <Content Include="Areas\Admins\Views\Admin\CreatePropertyType.cshtml" />
     <None Include="Scripts\Admin.js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.js" />
     <Content Include="Scripts\Admin.js\jquery-1.10.2.min.js" />
