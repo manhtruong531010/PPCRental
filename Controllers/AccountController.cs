@@ -87,27 +87,36 @@ namespace Website_BĐS.Controllers
             return Redirect("/");
         }
 
-        [HttpGet]
-        public ActionResult ChangePassword(int id)
+        	 [HttpGet]
+        public ActionResult ChangePassword()
         {
-            var userdetail = db.USERs.Where(x => x.ID == 3).FirstOrDefault();
-            return View(userdetail);
+            int id = int.Parse(Session["userid"].ToString());
+            var userdetail = db.USERs.Where(x => x.ID == id);
+            return View();
         }
 
         [HttpPost]
-        public ActionResult ChangePassword(int id, string oldpass, string newpass, string conpass)
+        public ActionResult ChangePassword(string oldpass, string newpass, string conpass)
         {
-            var userdetail = db.USERs.Where(x => x.ID == 3).FirstOrDefault();
-            if (userdetail.Password == oldpass)
+            int id = int.Parse(Session["userid"].ToString());
+            var userdetail = db.USERs.Find(id);
+            if (userdetail.ID == id)
             {
-                if (newpass == conpass)
+                if (userdetail.Password == oldpass)
                 {
-                    userdetail.Password = newpass;
-                    db.SaveChanges();
-                    ViewBag.mess = "success";
+                    if (newpass == conpass)
+                    {
+                        userdetail.Password = newpass;
+                        db.SaveChanges();
+                        ViewBag.mess = "success";
+                        return View("Index");
+                    }
+                    ViewBag.mess = "mat khau xac nhan khong dung";
                 }
+                ViewBag.mess = "mat khau cu khong dung";
             }
-            return View();
+            return RedirectToAction("Index", "Agency", new { userid = int.Parse(Session["userid"].ToString())});
         }
-	}
+
+    }
 }
