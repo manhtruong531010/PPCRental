@@ -127,17 +127,27 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="">
-                                    @Session["username"]
+                                <a href="~/Home/Index">
+                                    <p>HOME PAGE</p>
                                 </a>
                             </li>
-                           
-                            <li>
-                                <a href="~/Account/Logout">
-                                    <p>Log out</p>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+                                        <img src="~/Images/icon-user.png" style="width:25px; margin-top:-5px" />
+                                        @Session["username"]
+                                        <b class="caret"></b>
+                                    </p>
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">View Profile</a></li>
+                                    <li>
+                                        <a href="~/Account/Logout">
+                                            <p>Log out</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="separator hidden-lg hidden-md"></li>
                         </ul>
                     </div>
                 </div>
@@ -183,21 +193,10 @@
     </div>
 
 </body>
-<!--   Core JS Files   -->
-@*<script src="~/Scripts/Admin.js/jquery.3.2.1.min.js" type="text/javascript"></script>
+</html>
+<script src="~/Scripts/Admin.js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="~/Scripts/Admin.js/bootstrap.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="~/Scripts/Admin.js/chartist.min.js"></script>
-]<!--  Notifications Plugin    -->
 <script src="~/Scripts/Admin.js/bootstrap-notify.js"></script>
-]<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="~/Scripts/Admin.js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="~/Scripts/Admin.js/demo.js"></script>*@
-@*Custom table*@
-
 <script src="~/Scripts/Admin.js/jquery.min.js"></script>
 <script src="~/Scripts/Admin.js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
@@ -214,4 +213,3 @@
 @RenderSection("Scripts", required: false)
 
 
-</html>
