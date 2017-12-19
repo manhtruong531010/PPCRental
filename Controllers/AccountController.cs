@@ -22,10 +22,6 @@ namespace Website_BĐS.Controllers
         {
             return View();
         }
-        public ActionResult RegisterAccount()
-        {
-            return View();
-        }
         public ActionResult Dashboard()
         {
                 //kiem tra da kich hoat
@@ -118,5 +114,22 @@ namespace Website_BĐS.Controllers
             return RedirectToAction("Index", "Agency", new { userid = int.Parse(Session["userid"].ToString())});
         }
 
+        [HttpGet]
+        public ActionResult RegisterAccount()
+        {
+
+            USER cre = new USER();
+            return View(cre);
+        }
+        [HttpPost]
+        public ActionResult RegisterAccount(USER p)
+        {
+
+            p.Role = "1";
+            p.Status = true;
+            db.USERs.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("Login","Account");
+        }
     }
 }
