@@ -53,5 +53,11 @@ namespace Website_BĐS.Models
         public virtual USER USER1 { get; set; }
         public virtual WARD WARD { get; set; }
         public HttpPostedFileBase AvatarFile { get; set; }
+
+        public int FeatureID { get; set; }
+        public string FeatureName { get; set; }
+        public List<FEATURE> GetFeatureList { get; set; }
+        public IEnumerable<FEATURE> Feature { get; set; }
+        public string[] ListFeature { get; set; }
     }
 }

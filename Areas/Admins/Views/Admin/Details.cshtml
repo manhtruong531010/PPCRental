@@ -85,7 +85,20 @@
         <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%">
             <h3 style="text-align: center; padding-top:-15px">TIỆN ÍCH</h3>
             <hr style="color:#797777; border:1px solid" />
-            <p style="padding-bottom:10px"></p>
+            @{
+                foreach (var feature in ViewBag.features)
+                {
+                    foreach (var fes in ViewBag.fea)
+                    {
+                        if (feature.Feature_ID == fes.ID)
+                        {
+                            <div class="col-md-6" style="text-align:left">
+                                <span>@fes.FeatureName</span>
+                            </div>
+                        }
+                    }
+                }
+            }
         </div>
         @*Mổ tả*@
         <div class="col-md-8" style="margin-left: 20%; background-color: #f3f1f1; width:110%; margin-top:5%">

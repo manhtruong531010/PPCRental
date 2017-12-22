@@ -72,7 +72,9 @@ namespace Website_BĐS.Areas.Admins.Controllers
         public ActionResult Create(PROPERTY pROPERTY, List<HttpPostedFileBase> files)
         {
             idd = int.Parse(Session["userid"].ToString());
-            ReadList();         
+            ReadList();
+            var ImagesName = "";
+
             try
             {
                 string filename = Path.GetFileNameWithoutExtension(pROPERTY.AvatarFile.FileName);
@@ -103,6 +105,19 @@ namespace Website_BĐS.Areas.Admins.Controllers
                 {
                     long id = modelCr.Insert(pROPERTY);
                     var path = "";
+                    var Features = Request.Form.AllKeys.Where(k => k.StartsWith("Feature_"));
+                    foreach (var fea in Features)
+                    {
+                        var ids = int.Parse(fea.Split('_')[1]);
+                        if (Request.Form[fea].StartsWith("true"))
+                        {
+                            model.PROPERTY_FEATURE.Add(new PROPERTY_FEATURE
+                            {
+                                Property_ID = (int)id,
+                                Feature_ID = ids
+                            });
+                        }
+                    }
                     foreach (var item in files)
                     {
                         if (item != null)
@@ -116,7 +131,14 @@ namespace Website_BĐS.Areas.Admins.Controllers
                                 {
                                     var path0 = id + item.FileName;
                                     path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
-
+                                    if (ImagesName != "")
+                                    {
+                                        ImagesName = ImagesName + "," + (string)path0;
+                                    }
+                                    else
+                                    {
+                                        ImagesName = (string)path0;
+                                    }
                                     item.SaveAs(path);
                                     ViewBag.UploadSuccess = true;
 
@@ -124,9 +146,12 @@ namespace Website_BĐS.Areas.Admins.Controllers
                             }
                         }
                     }
+                    var proAddImage = model.PROPERTies.FirstOrDefault(x => x.ID == id);
+                    proAddImage.Images = (string)ImagesName;
+                    model.SaveChanges();
                     if (id > 0)
                     {
-                        return RedirectToAction("ViewProperty", "Admin", new { id = UserID});
+                        return RedirectToAction("ViewListallProperty", "Admin");
                     }
                     else
                     {
@@ -148,6 +173,19 @@ namespace Website_BĐS.Areas.Admins.Controllers
                 {
                     long id = modelCr.Insert(pROPERTY);
                     var path = "";
+                    var Features = Request.Form.AllKeys.Where(k => k.StartsWith("Feature_"));
+                    foreach (var fea in Features)
+                    {
+                        var ids = int.Parse(fea.Split('_')[1]);
+                        if (Request.Form[fea].StartsWith("true"))
+                        {
+                            model.PROPERTY_FEATURE.Add(new PROPERTY_FEATURE
+                            {
+                                Property_ID = (int)id,
+                                Feature_ID = ids
+                            });
+                        }
+                    }
                     foreach (var item in files)
                     {
                         if (item != null)
@@ -161,7 +199,14 @@ namespace Website_BĐS.Areas.Admins.Controllers
                                 {
                                     var path0 = id + item.FileName;
                                     path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
-
+                                    if (ImagesName != "")
+                                    {
+                                        ImagesName = ImagesName + "," + (string)path0;
+                                    }
+                                    else
+                                    {
+                                        ImagesName = (string)path0;
+                                    }
                                     item.SaveAs(path);
                                     ViewBag.UploadSuccess = true;
 
@@ -169,9 +214,12 @@ namespace Website_BĐS.Areas.Admins.Controllers
                             }
                         }
                     }
+                    var proAddImage = model.PROPERTies.FirstOrDefault(x => x.ID == id);
+                    proAddImage.Images = (string)ImagesName;
+                    model.SaveChanges();
                     if (id > 0)
                     {
-                        return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
+                        return RedirectToAction("ViewListallProperty", "Admin");
                     }
                     else
                     {
@@ -179,7 +227,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
                     }
                 }
             }
-            return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
+            return RedirectToAction("ViewListallProperty", "Admin");
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -193,6 +241,12 @@ namespace Website_BĐS.Areas.Admins.Controllers
         {
             var db = model.PROPERTies.Find(id);
             model.PROPERTies.Remove(db);
+            var fedb = model.PROPERTY_FEATURE.Where(x => x.Property_ID == id).ToList();
+            foreach (var feitem in fedb)
+            {
+                model.PROPERTY_FEATURE.Remove(feitem);
+
+            }
             model.SaveChanges();
             return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
         }
@@ -203,6 +257,8 @@ namespace Website_BĐS.Areas.Admins.Controllers
             ViewBag.district = model.DISTRICTs.OrderByDescending(x => x.ID).Where(y => y.ID >= 31 && y.ID <= 54).ToList();
             ViewBag.street = model.STREETs.OrderByDescending(x => x.ID).Where(y => y.District_ID >= 31 && y.District_ID <= 54).ToList();
             ViewBag.status = model.PROJECT_STATUS.OrderByDescending(x => x.ID).ToList();
+            ViewBag.Feature_ID = model.FEATUREs.ToList();
+
 
         }
 
@@ -234,7 +290,33 @@ namespace Website_BĐS.Areas.Admins.Controllers
                 PROPERTY.Avatar = p.Avatar;
             }
             }
+            var Features = Request.Form.AllKeys.Where(k => k.StartsWith("Feature_"));
+            foreach (var fea in Features)
+            {
+                var ids = int.Parse(fea.Split('_')[1]);
+                if (Request.Form[fea].StartsWith("true"))
+                {
+                    var feIDcheck = model.PROPERTY_FEATURE.Where(x => x.Property_ID == id && x.Feature_ID == ids).ToList();
+                    if (feIDcheck.Count() == 0)
+                    {
+                        model.PROPERTY_FEATURE.Add(new PROPERTY_FEATURE
+                        {
+                            Property_ID = (int)id,
+                            Feature_ID = ids
+                        });
+                    }
 
+                }
+                else
+                {
+                    var feIDdb = model.PROPERTY_FEATURE.Where(x => x.Property_ID == id && x.Feature_ID == ids).ToList();
+                    foreach (var feitem in feIDdb)
+                    {
+                        model.PROPERTY_FEATURE.Remove(feitem);
+
+                    }
+                }
+            }
             PROPERTY.ID = p.ID;
             PROPERTY.PropertyName = p.PropertyName;
             PROPERTY.PropertyType_ID = p.PropertyType_ID;
@@ -254,7 +336,7 @@ namespace Website_BĐS.Areas.Admins.Controllers
             PROPERTY.Sale_ID = int.Parse(Session["userid"].ToString());
 
             model.SaveChanges();
-            return RedirectToAction("ViewProperty", "Admin", new { id = UserID });
+            return RedirectToAction("ViewListallProperty", "Admin");
 
         }
        
@@ -264,6 +346,9 @@ namespace Website_BĐS.Areas.Admins.Controllers
             var project = model.PROPERTies.FirstOrDefault(x => x.ID == id);
             ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
                             .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+            ViewBag.features = model.PROPERTY_FEATURE.Where(x => x.Property_ID == id).ToList();
+            ViewBag.Countt = model.PROPERTY_FEATURE.Where(x => x.Property_ID == id).Count();
+            ViewBag.fea = model.FEATUREs.ToList();
             return View(project);
 
         }

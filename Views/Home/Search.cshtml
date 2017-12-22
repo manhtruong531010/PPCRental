@@ -35,12 +35,10 @@
 <!-------------------------------------FILTER------------------------------------->
 <!-------------------------------------FILTER------------------------------------->
 
-<div class="mh-search-horizontal wow rotateIn" style=" margin-top: -110px; width:75%; height:200px">
+<div class="mh-search-horizontal wow rotateIn" style="margin-top: -110px; width: 75%; height: 270px; opacity: .9; ">
     <h5 class="mh-search__label" style="margin-top:-15px; margin-bottom :-15px; color:#00b9ff; font-size: 20px"></h5>
     <div class="filter" style="margin-top:10px">
         <div class="filter-form" style="color:#080707">
-@*@using (Html.BeginForm("Search", "Home", FormMethod.Post))
-{*@
             <form id="advanced_search" role="search" action="@Url.Action("Search","Home")" name="search" method="post">
                 <div>
                     <div class="col-xs-4 select2-selection__rendered" style="text-align:center">
@@ -61,10 +59,28 @@
                             @Html.DropDownList("Duong", Duongs, "Chọn đường...", new { @id = "Duong" })
                         </div>
                     </div>
+                    <div class="col-xs-7 " style="text-align: center; margin-left: -32%;; padding-top: 5px">
+                        <label>Nhập tên dự án</label>
+                        <div>
+                            @Html.TextBox("txtSearch", "Tên dự án", new { @id = "txtSearch" })
+                        </div>
+                    </div>
+                    <div class="col-xs-2 " style="text-align: center; padding-top: 5px; margin-left:3%">
+                        <label style="margin-left:100%">Giá</label>
+                        <div>
+                            @Html.TextBox("txtmin", "Từ", new { @id = "txtmin" })
+                        </div>
+                    </div>
+                    <div class="col-xs-2 " style="text-align:center; padding-top:10px">
+                        <label></label>
+                        <div>
+                            @Html.TextBox("txtmax", "Đến", new { @id = "txtmax" })
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-xs-8" style="margin-left:19%">
-                    <button name="search" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary-ghost mdl-button--clear" data-upgraded=",MaterialButton,MaterialRipple" style="position: relative; top: 25px; margin-left:-5%">
+                    <button name="search" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary-ghost mdl-button--clear" data-upgraded=",MaterialButton,MaterialRipple" style="position: relative; top: 15px; margin-left:-5%">
                         Tìm
                     </button>
                 </div>

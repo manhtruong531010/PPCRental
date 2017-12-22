@@ -17,7 +17,14 @@ namespace Website_BĐS
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                //namespaces: new[] { "Website_BĐS.Controllers" }
             );
+            //routes.MapRoute(
+            //name: "Login",
+            //url: "dang-nhap",
+            //defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
+            //namespaces: new[] { "Website_BĐS.Controllers" }
+            //);
         }
     }
 }

@@ -105,13 +105,24 @@ namespace Website_BĐS.Controllers
                         userdetail.Password = newpass;
                         db.SaveChanges();
                         ViewBag.mess = "success";
-                        return View("Index");
+                        return RedirectToAction("Index", "Agency/Agency", new { userid = int.Parse(Session["userid"].ToString()) });
                     }
-                    ViewBag.mess = "mat khau xac nhan khong dung";
+                    else
+                    {
+                        ViewBag.mess = "mat khau xac nhan khong dung";
+                        return View();
+                    }
                 }
-                ViewBag.mess = "mat khau cu khong dung";
+                else
+                {
+                    ViewBag.mess = "mat khau cu khong dung";
+                    return View();
+                }
             }
-            return RedirectToAction("Index", "Agency", new { userid = int.Parse(Session["userid"].ToString())});
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]

@@ -58,6 +58,35 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.Label("Feature", new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @{
+                    bool che = false;
+                    foreach (var f in db.FEATUREs)
+                    {
+                        foreach (var checl in db.PROPERTY_FEATURE)
+                        {
+                            if (checl.Property_ID == Model.ID && checl.Feature_ID == f.ID)
+                            {
+                                @Html.CheckBox("Feature_" + f.ID, true) <span>@f.FeatureName</span>
+                                che = true;
+                            }
+
+                        }
+                        if (che == true)
+                        {
+                            che = false;
+                            continue;
+                        }
+                        else
+                        {
+                            @Html.CheckBox("Feature_" + f.ID, false) <span>@f.FeatureName</span>
+                        }
+                    }
+                }
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.District_ID, "District", new { @class = "control-label col-md-2" })
@@ -70,14 +99,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Ward_ID, "Ward", new { @class = "control-label col-md-2" })
             <div class="col-md-4" id=" ward">
-                @Html.DropDownList("Ward_ID", new SelectList(ViewBag.ward, "ID", "WardName", Model.WARD), new { @class = "form-control", required = "required" })
+                @Html.DropDownList("Ward_ID", new SelectList(ViewBag.ward, "ID", "WardName", Model.WARD), new { @class = "form-control", required = "required", @style = "width:333px" })
                 @Html.ValidationMessageFor(model => model.Ward_ID)
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Street_ID, "Street", new { @class = "control-label col-md-2" })
             <div class="col-md-4" id=" street">
-                @Html.DropDownList("Street_ID", new SelectList(ViewBag.street, "ID", "StreetName", Model.STREET), new { @class = "form-control", required = "required" })
+                @Html.DropDownList("Street_ID", new SelectList(ViewBag.street, "ID", "StreetName", Model.STREET), new { @class = "form-control", required = "required", @style = "width:333px" })
                 @Html.ValidationMessageFor(model => model.Street_ID)
             </div>
         </div>

@@ -18,7 +18,9 @@ namespace Website_BĐS.Areas.Agency
                 "Agency_default",
                 "Agency/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
+                //namespaces: new[] { "Website_BĐS.Controllers" }
             );
         }
+
     }
 }
