@@ -86,23 +86,24 @@ namespace Website_BĐS.Controllers
             {
                 pro = pro.Where(x => x.STREET.ID == Duong).ToList();
             }
-            if (!(String.IsNullOrEmpty(txtSearch)) || !(String.IsNullOrWhiteSpace(txtSearch)))
+
+            if (txtSearch != "Tên dự án")
             {
                 pro = pro.Where(x => x.PropertyName.Contains(txtSearch)).ToList();
             }
             try
             {
-                if (txtmin != null || !(String.IsNullOrEmpty(txtmin)) || !(String.IsNullOrWhiteSpace(txtmin)) || !(txtmin.Equals("")))
+                if (txtmin != "Từ")
                 {
                     pro = pro.Where(x => x.Price >= int.Parse(txtmin)).ToList();
                 }
             }
-            catch(FormatException)
+            catch (FormatException)
             {
             }
             try
             {
-                if (txtmax != null || !(String.IsNullOrEmpty(txtmax)) || !(String.IsNullOrWhiteSpace(txtmax)) || !(txtmax.Equals("")))
+                if (txtmax != "Đến")
                 {
                     pro = pro.Where(x => x.Price <= int.Parse(txtmax)).ToList();
                 }
@@ -110,6 +111,31 @@ namespace Website_BĐS.Controllers
             catch (FormatException)
             {
             }
+
+            //if (!(String.IsNullOrEmpty(txtSearch)) || !(String.IsNullOrWhiteSpace(txtSearch)))
+            //{
+            //    pro = pro.Where(x => x.PropertyName.Contains(txtSearch)).ToList();
+            //}
+            //try
+            //{
+            //    if (txtmin != null || !(String.IsNullOrEmpty(txtmin)) || !(String.IsNullOrWhiteSpace(txtmin)) || !(txtmin.Equals("")))
+            //    {
+            //        pro = pro.Where(x => x.Price >= int.Parse(txtmin)).ToList();
+            //    }
+            //}
+            //catch(FormatException)
+            //{
+            //}
+            //try
+            //{
+            //    if (txtmax != null || !(String.IsNullOrEmpty(txtmax)) || !(String.IsNullOrWhiteSpace(txtmax)) || !(txtmax.Equals("")))
+            //    {
+            //        pro = pro.Where(x => x.Price <= int.Parse(txtmax)).ToList();
+            //    }
+            //}
+            //catch (FormatException)
+            //{
+            //}
             //Function();
             //var search = model.PROPERTies.ToList().Where(x => x.DISTRICT.DistrictName == quan || x.STREET.StreetName == duong || x.PROPERTY_TYPE.Description == loaiDA);
             return View(pro);

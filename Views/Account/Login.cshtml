@@ -14,11 +14,17 @@
     <div class="wrapper">
         <div class="container">
             <h1>Welcome to PPC Rental</h1>
-
+            @{
+                if (ViewBag.LoginMes != null)
+                {
+                    <p style="color:#ff0000">* @ViewBag.LoginMes</p>
+                }
+            }
             <form action="~/Account/Login" method="post" class="Login">
                 <input type="text" name="email" placeholder="Username" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <button type="submit" class="submit" id="login-button">Login</button>
+               
                 <p>
                     <a href="~/Home/Index" style="margin-left:28%"> Home</a> 
                     <a href="~/Account/RegisterAccount" style="margin-left:2%"> Register</a>

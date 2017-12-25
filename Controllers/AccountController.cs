@@ -47,7 +47,7 @@ namespace Website_BĐS.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password) 
         {
-
+            ViewBag.LoginMes = null;
             var userdetail = db.USERs.Where(x => x.Email.Equals(email)).FirstOrDefault();
             if (userdetail != null)
             {
@@ -55,21 +55,29 @@ namespace Website_BĐS.Controllers
                 if (userdetail.Password.Equals(password))
                 {
                     //kiem tra da kich hoat
-                    if (userdetail.Status == true && int.Parse(userdetail.Role) == 0) 
+                    if (userdetail.Status == true && int.Parse(userdetail.Role) == 0)
                     {
                         Session["username"] = userdetail.FullName;
                         Session["userrole"] = userdetail.Role;
                         Session["userid"] = userdetail.ID;
                         return RedirectToAction("Index", "Admins/Admin");
                     }
-                    else if(userdetail.Status == true && int.Parse(userdetail.Role) == 1)
+                    else if (userdetail.Status == true && int.Parse(userdetail.Role) == 1)
                     {
                         Session["username"] = userdetail.FullName;
                         Session["userrole"] = userdetail.Role;
                         Session["userid"] = userdetail.ID;
                         return RedirectToAction("Index", "Agency/Agency", new { userid = userdetail.ID });
-                    }
+                    }                   
                 }
+                else
+                {
+                    ViewBag.LoginMes = "Mật khẩu không chính xác";
+                }
+            }
+            else
+            {
+                ViewBag.LoginMes = "Tài khoản không tồn tại";
             }
             return View();
             
