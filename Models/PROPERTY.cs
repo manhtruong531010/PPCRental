@@ -59,5 +59,6 @@ namespace Website_BĐS.Models
             public List<FEATURE> GetFeatureList { get; set; }
             public IEnumerable<FEATURE> Feature { get; set; }
             public string[] ListFeature { get; set; }
+            public IEnumerable<HttpPostedFileBase> MultiImage { get; set; }
     }
 }

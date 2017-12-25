@@ -13,7 +13,7 @@
 <div class="row" style="margin-left:10%; margin-right:8%">
     <div class="col-md-8">
         @* --Images*@
-        <div id="carousel-example" class="carousel slide" data-ride="carousel" style="height:400px;width:700px; margin-left:10%">
+        <div id="carousel-example" class="carousel slide" data-ride="carousel" style="height:400px;width:700px; margin-left:12%">
 
             <!-- Indicators -->
             <!-- Wrapper for slides -->
@@ -24,7 +24,7 @@
             </div>
 
         </div>
-        <p style=" margin-left:65px; margin-top: 5px">
+        @*<p style=" margin-left:65px; margin-top: 5px">
             @{
                 foreach (var image in (IEnumerable<string>)ViewBag.Images)
                 {
@@ -37,7 +37,23 @@
 
                 }
             }
-        </p>
+        </p>*@
+        <div style="margin-left:20%">
+            @{
+                if (Model.Images != null)
+                {
+                    string[] arr = Model.Images.Split(',');
+                    foreach (var item in arr)
+                    {
+                        <img src="~/MultiImages/@item" width="100px" />
+                    }
+                }
+                else
+                {
+                    <img src="~MultiImages/NullImages.jpg" alt=" " width="100px" />
+                }
+            }
+        </div>
 
  
     

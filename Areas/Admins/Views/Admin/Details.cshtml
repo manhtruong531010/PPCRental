@@ -25,7 +25,7 @@
             </div>
 
         </div>
-        <p style=" margin-left:65px; margin-top: 5px">
+        @*<p style=" margin-left:65px; margin-top: 5px">
             @{
                 foreach (var image in (IEnumerable<string>)ViewBag.Images)
                 {
@@ -38,8 +38,21 @@
 
                 }
             }
-        </p>
-
+        </p>*@
+        @{
+            if (Model.Images != null)
+            {
+                string[] arr = Model.Images.Split(',');
+                foreach (var item in arr)
+                {
+                    <img src="~/MultiImages/@item" width="100px" />
+                }
+            }
+            else
+            {
+                <img src="~MultiImages/NullImages.jpg" alt=" " width="100px" />
+            }
+        }
 
 
 

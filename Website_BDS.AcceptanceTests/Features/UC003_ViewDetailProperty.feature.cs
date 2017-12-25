@@ -89,7 +89,7 @@ namespace Website_BDS.AcceptanceTests.Features
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
-                        "Avarta",
+                        "Avatar",
                         "Images",
                         "PropertyType",
                         "Content",
@@ -103,11 +103,11 @@ namespace Website_BDS.AcceptanceTests.Features
                         "BathRoom",
                         "PackingPlace",
                         "UserID",
-                        "Create_at",
+                        "Created_at",
                         "Create_post",
                         "Status",
                         "Note",
-                        "Update_at",
+                        "Updated_at",
                         "Sale_ID"});
             table1.AddRow(new string[] {
                         "PIS Top Apartment",

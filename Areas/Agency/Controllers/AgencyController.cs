@@ -97,12 +97,40 @@ namespace Website_BĐS.Areas.Agency.Controllers
             ViewBag.Feature_ID = model.FEATUREs.ToList();
 
         }
+        private string UpIma(PROPERTY p)
+        {
+            string filename;
+            string extension;
+            string s = "";
+            string b;
+            foreach (var file in p.MultiImage)
+            {
+                if (file != null)
+                {
+                    filename = Path.GetFileNameWithoutExtension(file.FileName);
+                    extension = Path.GetExtension(file.FileName);
+                    filename = filename + DateTime.Now.ToString("yymmssff") + extension;
+                    p.Images = filename;
+                    b = p.Images;
+                    if (s == "")
+                    {
+                        s = b;
+                    }
+                    else
+                    {
+                        s = s + "," + b;
+                    }
+                    //s = string.Concat(s, b, ",");
+                    filename = Path.Combine(Server.MapPath("~/MultiImages"), filename);
+                    file.SaveAs(filename);
+                }
+            }
+            return s;
+        }
 
         [HttpPost]
         public ActionResult Edit(int id, PROPERTY p, string submit)
         {
-            int ID = id;
-           
                 ReadList();
                 var en = model.PROPERTies.Find(p.ID);
 
@@ -128,6 +156,12 @@ namespace Website_BĐS.Areas.Agency.Controllers
                         PROPERTY.Avatar = p.Avatar;
                     }
                 }
+                //Edit Multiimage
+                if (UpIma(p) != "")
+                {
+                    PROPERTY.Images = UpIma(p);
+                }
+                //edit feature
                 var Features = Request.Form.AllKeys.Where(k => k.StartsWith("Feature_"));
                 foreach (var fea in Features)
                 {
@@ -203,6 +237,92 @@ namespace Website_BĐS.Areas.Agency.Controllers
         {
             ReadList();
             var ImagesName = "";
+            if (submit == "Post")
+            {
+                //validate
+                var checkName = model.PROPERTies.Where(x => x.PropertyName == pROPERTY.PropertyName).ToList();
+                //validate
+                if (pROPERTY.PropertyName == null)
+                {
+                    ModelState.AddModelError("PropertyName", "PropertyName can't empty!");
+                }
+                else if (pROPERTY.PropertyName.Length > 150 || pROPERTY.PropertyName.Length < 5)
+                {
+                    ModelState.AddModelError("PropertyName", "PropertyName must between 5 and 150");
+                }
+                else if (checkName.Count() > 0)
+                {
+                    ModelState.AddModelError("PropertyName", "PropertyName is exist!");
+                }
+                //avatar
+                //if (pROPERTY.ImageFile2 == null)
+                //{
+                //    ModelState.AddModelError("Avatar", "Avatar can't Empty!");
+                //}
+                ////image
+                //if (pROPERTY.Images == null)
+                //{
+                //    ModelState.AddModelError("Images", "Images can't Empty!");
+                //}
+                //propertytype
+                if (pROPERTY.PropertyType_ID == null)
+                {
+                    ModelState.AddModelError("PropertyType", "PropertyType can't Empty!");
+                }
+                //content
+                if (pROPERTY.Content == null)
+                {
+                    ModelState.AddModelError("Content", "Content can't Empty!");
+                }
+                else if (pROPERTY.Content.Length > 150 || pROPERTY.Content.Length < 5)
+                {
+                    ModelState.AddModelError("Content", "Content must between 5 and 150");
+                }
+
+                ////feature
+                //if (pROPERTY.PROPERTY_FEATURE == null)
+                //{
+                //    ModelState.AddModelError("FEATURE", "FEATURE can't Empty!");
+                //}
+                //street
+                if (pROPERTY.Street_ID == null)
+                {
+                    ModelState.AddModelError("Street", "Street can't Empty!");
+                }
+                if (pROPERTY.Ward_ID == null)
+                {
+                    ModelState.AddModelError("Ward", "Ward can't Empty!");
+                }
+                if (pROPERTY.District_ID == null)
+                {
+                    ModelState.AddModelError("District", "District can't Empty!");
+                }
+                //price
+                if (pROPERTY.Price == null)
+                {
+                    ModelState.AddModelError("Price", "Price can't Empty!");
+                }
+                //?rea
+                if (pROPERTY.Area == null)
+                {
+                    ModelState.AddModelError("Area", "Area can't Empty!");
+                }
+                //bathroom
+                if (pROPERTY.BathRoom == null)
+                {
+                    ModelState.AddModelError("BathRoom", "BathRoom can't Empty!");
+                }
+                //bedroom
+                if (pROPERTY.BedRoom == null)
+                {
+                    ModelState.AddModelError("BedRoom", "BedRoom can't Empty!");
+                }
+                //packingplace
+                if (pROPERTY.PackingPlace == null)
+                {
+                    ModelState.AddModelError("PackingPlace", "PackingPlace can't Empty!");
+                }
+            }
             try
             {
 
@@ -383,8 +503,8 @@ namespace Website_BĐS.Areas.Agency.Controllers
                     }
                 }
             }
-          
-            return RedirectToAction("Index", "Agency", new { userid = idd });
+
+            return View();
         }
     }
 }
