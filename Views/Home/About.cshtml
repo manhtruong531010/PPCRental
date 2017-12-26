@@ -1,7 +1,19 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model Website_BĐS.Models.ABOUTU
 
-<p>Use this area to provide additional information.</p>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+<h2>Welcome to PPC Rental</h2>
+
+<div>
+	<hr />
+    <dl class="col-md-10" style="margin-right:10%;margin-left:10%">
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+    </dl>
+</div>

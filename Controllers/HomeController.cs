@@ -60,8 +60,8 @@ namespace Website_BĐS.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-            return View();
+            var about = model.ABOUTUS.FirstOrDefault(x => x.ID == 1);
+            return View(about);
         }
 
         public ActionResult Contact()
