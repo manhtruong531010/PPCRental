@@ -68,6 +68,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -80,6 +81,7 @@
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
@@ -103,14 +105,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drivers\DetailsProperty\PropertyDetailsDriver.cs" />
+    <Compile Include="Drivers\PropertyDetailsDriver.cs" />
+    <Compile Include="Drivers\ListProjectDriver.cs" />
     <Compile Include="Features\UC003_ViewDetailProperty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UC003_ViewDetailProperty.feature</DependentUpon>
     </Compile>
+    <Compile Include="StepDefinitions\InsertDataToDB.cs" />
     <Compile Include="StepDefinitions\UC003_ViewDetailPropertySteps.cs" />
     <Compile Include="Support\ActionResultExtensions.cs" />
+    <Compile Include="Support\HttpContextStub.cs" />
     <Compile Include="TableExtensions.cs" />
     <Compile Include="Drivers\Property\PropertyDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +141,10 @@
     <ProjectReference Include="..\Website_BDS.UITests.Selenium\Website_BDS.UITests.Selenium.csproj">
       <Project>{e166a6cb-7328-43d9-b0ee-4f86c73072ca}</Project>
       <Name>Website_BDS.UITests.Selenium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Website_BDS.UnitTests\Website_BDS.UnitTests.csproj">
+      <Project>{e9b60e22-f066-411c-abc0-9f86dc7c3f12}</Project>
+      <Name>Website_BDS.UnitTests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Website_BĐS.csproj">
       <Project>{9f8988a7-1a5c-4b66-90ff-953932a93ef2}</Project>

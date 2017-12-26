@@ -86,8 +86,35 @@ namespace Website_BDS.AcceptanceTests.Features
         public virtual void FeatureBackground()
         {
 #line 5
-#line hidden
+  #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "FullName",
+                        "Phone",
+                        "Address",
+                        "Role",
+                        "Status"});
+            table1.AddRow(new string[] {
+                        "lythihuyenchau@gmail.com",
+                        "123456",
+                        "Lý Châu",
+                        "0999580654",
+                        "Trần Hưng Đạo",
+                        "1",
+                        "True"});
+            table1.AddRow(new string[] {
+                        "Manhtruong@gmail.com",
+                        "123456",
+                        "Mạnh Trương",
+                        "01687631718",
+                        "Cô Giang",
+                        "0",
+                        "True"});
+#line 6
+ testRunner.Given("the following for user", ((string)(null)), table1, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
                         "Avatar",
                         "Images",
@@ -103,13 +130,13 @@ namespace Website_BDS.AcceptanceTests.Features
                         "BathRoom",
                         "PackingPlace",
                         "UserID",
-                        "Created_at",
+                        "Create_at",
                         "Create_post",
                         "Status",
                         "Note",
-                        "Updated_at",
+                        "Update_at",
                         "Sale_ID"});
-            table1.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "PIS Top Apartment",
                         "PIS_6656-Edit-stamp.jpg",
                         "a17584387317552326.jpg,AvatarNone17100766117552327.png,images1709523917552328.jpg" +
@@ -126,14 +153,14 @@ namespace Website_BDS.AcceptanceTests.Features
                         "3",
                         "2",
                         "1",
-                        "lythihuyenchau@gmail.com",
+                        "Lý Châu",
                         "2017-11-09",
                         "2017-11-09",
-                        "Ðã duyệt",
+                        "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "2"});
-            table1.AddRow(new string[] {
+                        "Mạnh Trương"});
+            table2.AddRow(new string[] {
                         "ViLa Q7",
                         "images172300301.jpg",
                         "images172300301.jpg",
@@ -149,21 +176,21 @@ namespace Website_BDS.AcceptanceTests.Features
                         "3",
                         "4",
                         "1",
-                        "lythihuyenchau@gmail.com",
+                        "Lý Châu",
                         "2017-11-09",
                         "2017-11-09",
-                        "Ðã duyệt",
+                        "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "2"});
-            table1.AddRow(new string[] {
+                        "Mạnh Trương"});
+            table2.AddRow(new string[] {
                         "PIS Serviced Apartment – Style",
                         "sunshine-benthanh-cityhome-10-stamp174228283.jpg",
                         "a - Copy17095239.jpg,images (1) - Copy17095242.jpg,images17095242.jpg",
                         "Office",
                         "The well equipped kitchen is opened on a cozy living room and a dining area with " +
                             "table and chairs..",
-                        "Bến Vân Ðồn",
+                        "Bền Văn Đồn",
                         "P.03",
                         "Q.4",
                         "30000",
@@ -172,14 +199,14 @@ namespace Website_BDS.AcceptanceTests.Features
                         "2",
                         "3",
                         "1",
-                        "lythihuyenchau@gmail.com",
+                        "Lý Châu",
                         "2017-11-09",
                         "2017-11-09",
-                        "Ðã duyệt",
+                        "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "3"});
-            table1.AddRow(new string[] {
+                        "Mạnh Trương"});
+            table2.AddRow(new string[] {
                         "Vinhomes Central Park L2 – Duong’s Apartment",
                         "PIS_7389-Edit-stamp.jpg",
                         "images1702244617042862.jpg",
@@ -195,21 +222,21 @@ namespace Website_BDS.AcceptanceTests.Features
                         "4",
                         "2",
                         "1",
-                        "lythihuyenchau@gmail.com",
+                        "Lý Châu",
                         "2017-11-09",
                         "2017-11-09",
-                        "Ðã duyệt",
+                        "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "3"});
-            table1.AddRow(new string[] {
+                        "Mạnh Trương"});
+            table2.AddRow(new string[] {
                         "Saigon Pearl Ruby Block",
                         "PIS_7319-Edit-stamp.jpg",
                         "images17423697317334243.jpg,PIS_4622-Edit17463610217334244.jpg",
                         "Apartment",
                         "Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker " +
                             "Area, 23/9 park…",
-                        "Chu Van An",
+                        "Chu Văn An",
                         "P.Long Bình",
                         "Q.9",
                         "30000",
@@ -218,15 +245,48 @@ namespace Website_BDS.AcceptanceTests.Features
                         "3",
                         "5",
                         "1",
-                        "lythihuyenchau@gmail.com",
+                        "Lý Châu",
                         "2017-11-09",
                         "2017-11-09",
-                        "Ðã duyệt",
+                        "Đã duyệt",
                         "Done",
                         "2017-11-23",
-                        "2"});
-#line 6
- testRunner.Given("the following property", ((string)(null)), table1, "Given ");
+                        "Mạnh Trương"});
+#line 11
+ testRunner.And("the following project", ((string)(null)), table2, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Property",
+                        "Feature"});
+            table3.AddRow(new string[] {
+                        "PIS Top Apartment",
+                        "Vườn"});
+            table3.AddRow(new string[] {
+                        "PIS Top Apartment",
+                        "Hồ bơi"});
+            table3.AddRow(new string[] {
+                        "ViLa Q7",
+                        "Chỗ đậu xe"});
+            table3.AddRow(new string[] {
+                        "ViLa Q7",
+                        "Phòng tập Gym"});
+            table3.AddRow(new string[] {
+                        "ViLa Q7",
+                        "Hồ bơi"});
+            table3.AddRow(new string[] {
+                        "PIS Serviced Apartment – Style",
+                        "Thang máy"});
+            table3.AddRow(new string[] {
+                        "Vinhomes Central Park L2 – Duong’s Apartment",
+                        "Sàn gỗ"});
+            table3.AddRow(new string[] {
+                        "Vinhomes Central Park L2 – Duong’s Apartment",
+                        "Cho nuôi thú cưng"});
+            table3.AddRow(new string[] {
+                        "Saigon Pearl Ruby Block",
+                        "Vườn"});
+#line 19
+ testRunner.And("the following property_feature", ((string)(null)), table3, "And ");
 #line hidden
         }
         
@@ -237,19 +297,19 @@ namespace Website_BDS.AcceptanceTests.Features
         public virtual void ViewDetailProperty()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View Detail Property", ((string[])(null)));
-#line 15
+#line 31
 this.ScenarioSetup(scenarioInfo);
 #line 5
-this.FeatureBackground();
-#line 16
+  this.FeatureBackground();
+#line 32
  testRunner.When("I click button Chi tiet \'PIS Top Apartment\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName"});
-            table2.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "PIS Top Apartment"});
-#line 17
- testRunner.Then("I should see property infomation", ((string)(null)), table2, "Then ");
+#line 33
+ testRunner.Then("I should see property infomation", ((string)(null)), table4, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

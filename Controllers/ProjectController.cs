@@ -24,8 +24,9 @@ namespace Website_BĐS.Controllers
         {
             int ID = id;
             var project = db.PROPERTies.FirstOrDefault(x => x.ID == id);
-            ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
-                            .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+            //ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
+            //                .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+            ViewBag.Images = db.PROPERTies.Where(x => x.ID == id).ToList();
             ViewBag.features = db.PROPERTY_FEATURE.Where(x => x.Property_ID == id).ToList();
             ViewBag.Countt = db.PROPERTY_FEATURE.Where(x => x.Property_ID == id).Count();
             ViewBag.fea = db.FEATUREs.ToList();
