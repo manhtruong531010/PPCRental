@@ -23,7 +23,7 @@ namespace Website_BĐS.AcceptanceTests.Drivers
     {
         //private const decimal BookDefaultPrice = 10;
         private ActionResult _result;
-        private ProjectController _controller;
+        //private ProjectController _controller;
         private readonly CatalogContext _context;
 
         public PropertyDetailsDriver(CatalogContext context)

@@ -15,7 +15,7 @@ namespace Website_BDS.AcceptanceTests.Drivers.Property
 			{
 			    Team33Entities db = new Team33Entities();
 				private readonly CatalogContext _context;
-				private readonly CatalogUser _contextEmail;
+                private readonly CatalogUser _contextEmail;
                 //private ActionResult _result;	
             
 				public PropertyDriver(CatalogContext context)

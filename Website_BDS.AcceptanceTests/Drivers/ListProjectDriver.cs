@@ -23,8 +23,8 @@ namespace PPCProject.AcceptanceTests.Drivers
     public class ListProjectDriver
     {
 
-        private ActionResult _result;
-        private HomeController _controller;
+        //private ActionResult _result;
+        //private HomeController _controller;
         private readonly CatalogContext _context;
 
         public ListProjectDriver(CatalogContext context)
