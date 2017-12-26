@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 using Website_BĐS.AcceptanceTests.Drivers;
 namespace PPCProject.AcceptanceTests.StepDefinitions
 {
-    [Binding, Scope(Tag = "automated")]
+    [Binding]
     class InsertDataToDB
     {
         private readonly PropertyDetailsDriver _projectDriver;

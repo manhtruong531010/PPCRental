@@ -3,7 +3,7 @@ using System.Linq;
 using Website_BĐS.Models;
 using FluentAssertions;
 
-namespace PROPERTYShop.AcceptanceTests.Common
+namespace Website_BDS.AcceptanceTests.Common
 {
     public class PropertyAssertions
     {
@@ -24,7 +24,7 @@ namespace PROPERTYShop.AcceptanceTests.Common
 
         public static void HomeScreenShouldShow(IEnumerable<PROPERTY> shownPROPERTYs, IEnumerable<string> expectedPropertyNames)
         {
-            shownPROPERTYs.Select(b => b.PropertyName).Should().BeEquivalentTo(expectedPropertyNames);
+            shownPROPERTYs.Select(b => b.PropertyName).Should().Equal(expectedPropertyNames);
         }
 
         public static void HomeScreenShouldShowInOrder(IEnumerable<PROPERTY> shownPROPERTYs, IEnumerable<string> expectedPropertyNames)

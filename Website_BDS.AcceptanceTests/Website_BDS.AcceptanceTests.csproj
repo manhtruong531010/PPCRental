@@ -107,6 +107,9 @@
   <ItemGroup>
     <Compile Include="Drivers\PropertyDetailsDriver.cs" />
     <Compile Include="Drivers\ListProjectDriver.cs" />
+    <Compile Include="Drivers\PropertyDetails\PropertyDriver.cs" />
+    <Compile Include="Drivers\Search\SearchDriver.cs" />
+    <Compile Include="Drivers\Search\SearchResultState.cs" />
     <Compile Include="Features\UC001_FilterProperty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,8 +141,10 @@
       <DependentUpon>UC006-PostProperty.feature</DependentUpon>
     </Compile>
     <Compile Include="StepDefinitions\InsertDataToDB.cs" />
+    <Compile Include="StepDefinitions\UC001_FilterPropertySteps.cs" />
     <Compile Include="StepDefinitions\UC003_ViewDetailPropertySteps.cs" />
     <Compile Include="Support\ActionResultExtensions.cs" />
+    <Compile Include="Support\DatabaseTools.cs" />
     <Compile Include="Support\HttpContextStub.cs" />
     <Compile Include="TableExtensions.cs" />
     <Compile Include="Drivers\Property\PropertyDriver.cs" />
